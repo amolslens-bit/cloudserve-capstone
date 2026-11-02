@@ -1,8 +1,13 @@
-Decision record: CloudServe capstone (Amol)
-#	Date	Decision	Why	Alternatives considered
-D1	2026-11-01	Use Python 3.11, installed alongside 3.14	3.14 is too new for parts of the stack; the guide's CI uses 3.11	Stay on 3.14 (risk of build failures)
-D2	2026-11-01	Protect `.env`, `storage/`, `.venv/` in `.gitignore` before creating any key	The submission is scanned for credentials; a key stays in history forever once committed	none
-D3	2026-11-01	Replace the university requirements.txt with current pinned versions (LangChain 1.x, LangGraph 1.x, Chroma 1.x)	The supplied file is unsatisfiable: openai 1.0.0 vs langchain-openai 0.0.7, pydantic 2.0.0 vs fastapi 0.104, and langsmith clash between langchain 0.1.0 and langchain-openai 0.0.7. Current versions match today's documentation	Patch the old 0.1-era pins so the guide's examples work as written
-D4	2026-11-01	Drop psycopg2-binary, jupyter, black, flake8 from runtime deps	SQLite is used for the decision log; fewer packages means fewer failures on the grader's machine	Keep the full original list
-D5	2026-11-01	Use VS Code integrated terminal with venv activated	One workbench; fewer environment mistakes	Separate PowerShell window
-| D6 | 2026-11-01 | Add .gitattributes with * text=auto eol=lf | Graders and CI run on Linux, so this keeps line endings consistent | Leave Git's default conversion |
+# Decision record: CloudServe capstone (Amol)
+
+| # | Date | Decision | Why | Alternatives considered |
+|---|------|----------|-----|------------------------|
+| D1 | 2026-11-01 | Use Python 3.11, installed alongside 3.14 | 3.14 is too new for parts of the stack; the guide's CI uses 3.11 | Stay on 3.14 (risk of build failures) |
+| D2 | 2026-11-01 | Protect `.env`, `storage/`, `.venv/` in `.gitignore` before creating any key | The submission is scanned for credentials; a key stays in history forever once committed | none |
+| D3 | 2026-11-01 | Replace the university requirements.txt with current pinned versions (LangChain 1.x, LangGraph 1.x, Chroma 1.x) | The supplied file is unsatisfiable: openai 1.0.0 vs langchain-openai 0.0.7, pydantic 2.0.0 vs fastapi 0.104, and langsmith clash between langchain 0.1.0 and langchain-openai 0.0.7. Current versions match today's documentation | Patch the old 0.1-era pins so the guide's examples work as written |
+| D4 | 2026-11-01 | Drop psycopg2-binary, jupyter, black, flake8 from runtime deps | SQLite is used for the decision log; fewer packages means fewer failures on the grader's machine | Keep the full original list |
+| D5 | 2026-11-01 | Use VS Code integrated terminal with venv activated | One workbench; fewer environment mistakes | Separate PowerShell window |
+| D6 | 2026-11-01 | Add `.gitattributes` with `* text=auto eol=lf` | Graders and CI run on Linux; keeps line endings consistent and avoids CRLF warnings and diffs | Leave Git default autocrlf conversion |
+| D7 | 2026-11-01 | Primary LLM: NVIDIA Nemotron 3.5 Lightning (free) on OpenRouter; Groq as fallback | Free; ~496ms latency and ~82 tokens/s fit the <3s p95 target; large context; established for 2 months | Nemotron 3 Ultra (1.8s, slower), Inkling (2.7s, 21 t/s), Gemma 4 31B (1.4s, 31 t/s), preview models (unstable) |
+| D8 | 2026-11-01 | Groq fallback model: openai/gpt-oss-20b | Small and fast; keeps the fallback simple; available on our Groq key | gpt-oss-120b (larger, slower), qwen3.8-27b, allam-2-7b |
+| D9 | 2026-11-02 | Compare two chunking strategies: fixed-size (500 chars, 50 overlap) as baseline vs structure-based (split on `##` section headings), each chunk tagged with doc_id, title, category, applies_to, section | Fixed-size gives a simple baseline to compare against. Every article has the same section layout (Symptoms/Causes/Resolution/Notes), so splitting on sections keeps each chunk's meaning whole. The Dataset Guide warns that splitting inside resolution steps gives incomplete passages. Winner chosen by hit rate@5 against `expected_doc_ids` on dev tickets, confirmed on validation | Category-based (mixes several articles into one chunk); semantic (overkill for 29 short uniform articles); whole-document (kept as fallback) |
