@@ -22,12 +22,43 @@ Source: `data/development_tickets.json` (500 tickets), analysed in `notebooks/01
 
 **Verified against the Dataset Guide:** channel order, tier split, ~25% non-fluent, ~75% answerable (actual 71%), ~2/3 auto-respond (actual 62%): all hold.
 
-## 2. Baseline (history block): TO DO
-CSAT, resolution time, first-contact resolution, repeat contact, overall and by tier/fluency.
+## 2. Baseline (AS-IS, history block)
 
-## 3. Stakeholder interviews: TO DO
+| ID | Measure | Overall | Enterprise | Business | Standard | Fluent | Non-fluent |
+|---|---|---|---|---|---|---|---|
+| E-12 | CSAT (1–5) | 2.97 | 3.05 | 2.91 | 2.98 | 2.95 | 3.04 |
+| | Resolution time (min) | 421.7 | 483.7 | 358.8 | 442.1 | 407.7 | 466.1 |
+| | First-contact resolution | 44% | 37% | 48% | 43% | 43% | 46% |
+| | Repeat contact | 22% | 24% | 23% | 20% | 22% | 19% |
+| | Escalated | 56% | 63% | 52% | 57% | 57% | 54% |
+
+Insights (E-12):
+- Low satisfaction overall (2.97/5) and slow fixes (~7 h).
+- Enterprise, the top tier, gets the slowest and least first-time-resolved service.
+- Humans escalate 56%, but labels say only 38% need it (E-06): ~18 points avoidable.
+- Non-fluent customers wait ~58 min longer; other measures similar.
+These AS-IS numbers are what the PRD success metrics (TO-BE) must beat.
+
+## 3. Stakeholder interviews (source: Stakeholder Interviews PDF, read 3 Nov 2026)
 | ID | Stakeholder | Need / pain point | Quote | Links to evidence |
 |---|---|---|---|---|
+| I-01 | Marcus (Head of Support) | FCR is the number that matters; a wrong answer is the worst failure; must be explainable for compliance review; enterprise must not get worse | "I would rather it said nothing than said something wrong." | E-12 (FCR 44%) |
+| I-02 | Sofia (Tier 1) | Answers are known but docs are hard to search; escalates when not confident; wants a draft + cited page, not blind auto-send | "The documentation is fine. I cannot find things in it." | 71% answerable vs 44% FCR |
+| I-03 | Daniel (Tier 2) | ~half of escalations avoidable; escalations arrive with no context; don't learn from old snippets; money, security, data location stay human | "I do not need it to be right. I need it to show its working." | E-06, E-07, E-12 |
+| I-04 | Ines (Tech writer) | Keyword search can't bridge customer words to article titles; private snippets unreviewed; needs citation to tell article error from system error | "There is no path between those two phrases in a keyword search." | E-09, decision log retrieved_docs |
+| I-05 | Ravi (Customer) | Wait cost depends on impact, not age; wants disclosure when AI drafted; no confident wrong answers; tier gap must not grow | "Same queue, completely different cost to me." | E-05 (urgency), E-12 |
+
+### Disagreements settled with data
+| ID | Claim | Data says | Verdict |
+|---|---|---|---|
+| D-01 | Sofia: non-fluent tickets have the worst satisfaction | CSAT non-fluent 3.04 vs fluent 2.95; but wait +58 min | Half right: slower, not less satisfied |
+| D-02 | Daniel: ~half of escalations are avoidable | 56% escalated vs 38% needed = ~1/3 avoidable | Direction right, size overstated |
+| D-03 | Ravi: enterprise gets answers in ~1 hour | Enterprise slowest (484 min) and lowest FCR (37%) | Contradicted |
+| D-04 | Marcus: FCR 42% | 44% | Close; from memory, not data |
+
+### Open questions from interviews
+- Q-05: No first-response time in data; Marcus's 8–12 h (vs 2 h SLA) cannot be verified. Assumption: use resolution time as proxy.
+- Q-06: Are billing disputes marked must_not_auto_respond? Daniel wants them human-only; check data.
 
 ## 4. Assumptions and open questions raised in discovery
 - Q-01: Validation-set rule conflict (Dataset Guide: use freely; Brief: run once). **Working rule:** build on the 500, run the 80 at checkpoints/end only.
@@ -35,4 +66,9 @@ CSAT, resolution time, first-contact resolution, repeat contact, overall and by 
 - Q-03: `last_reviewed_days_ago = 0` for all docs: fresh, or never filled in?
 - Q-04: Submission deadline in docs (13 Sept) vs actual (15 Nov), to confirm in writing.
 
-## 5. Problem statement: TO DO (written last, from sections 1–3)
+## 5. Problem statement (ordinary → extraordinary)
+**Ordinary (as stated by client):** CloudServe has low first-contact resolution (42–44% vs 65% benchmark) and misses its 2-hour first-response agreement (8–12 h) despite extra hires and a canned response library.
+
+**Extraordinary (upstream cause):** CloudServe already holds the answer to ~71% of tickets in 29 reviewed articles, yet only 44% are resolved at first contact and 56% are escalated when only 38% need it. Articles are titled in technical language while customers write in business language, so tier-1 agents can't find them, can't trust their own drafts, and escalate without context, where tier 2 restarts discovery. What tier 2 learns never flows back into the articles, so private, unreviewed snippets replace the standard answer. And the queue is worked by age, not impact, so an outage waits behind a pagination question. Each avoidable escalation costs ~4x a resolved ticket.
+
+Levers applied: economic (4x cost, FCR gap), data liquidity (71% answerable, ignored urgency), algorithmic (route/confidence decision), network effect (tier-2 feedback loop), JTBD (find + trust + hand over, not "a chatbot").
