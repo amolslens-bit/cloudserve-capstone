@@ -60,15 +60,26 @@ These AS-IS numbers are what the PRD success metrics (TO-BE) must beat.
 - Q-05: No first-response time in data; Marcus's 8–12 h (vs 2 h SLA) cannot be verified. Assumption: use resolution time as proxy.
 - Q-06: Are billing disputes marked must_not_auto_respond? Daniel wants them human-only; check data.
 
+
 ## 4. Assumptions and open questions raised in discovery
 - Q-01: Validation-set rule conflict (Dataset Guide: use freely; Brief: run once). **Working rule:** build on the 500, run the 80 at checkpoints/end only.
 - Q-02: Guide says "eight categories" but lists 10; JSON has 10.
-- Q-03: `last_reviewed_days_ago = 0` for all docs: fresh, or never filled in?
+- Q-03: `last_reviewed_days_ago = 0` for all docs: fresh, or never filled in after update?
 - Q-04: Submission deadline in docs (13 Sept) vs actual (15 Nov), to confirm in writing.
+- Q-07:  treat all 29 articles as current, but log the cited article on every answer so a stale one can be traced.
 
 ## 5. Problem statement (ordinary → extraordinary)
 **Ordinary (as stated by client):** CloudServe has low first-contact resolution (42–44% vs 65% benchmark) and misses its 2-hour first-response agreement (8–12 h) despite extra hires and a canned response library.
 
-**Extraordinary (upstream cause):** CloudServe already holds the answer to ~71% of tickets in 29 reviewed articles, yet only 44% are resolved at first contact and 56% are escalated when only 38% need it. Articles are titled in technical language while customers write in business language, so tier-1 agents can't find them, can't trust their own drafts, and escalate without context, where tier 2 restarts discovery. What tier 2 learns never flows back into the articles, so private, unreviewed snippets replace the standard answer. And the queue is worked by age, not impact, so an outage waits behind a pagination question. Each avoidable escalation costs ~4x a resolved ticket.
+### Extraordinary framing via the 6-step framework (Module 1 Session 2)
+1. Original: "Help us answer tickets faster with a chatbot" (Marcus).
+2. Levers applied: Data liquidity (71% of tickets answerable from 29 unused articles; urgency signal ignored); Network effects (each tier-2 resolution should improve answers for every later customer; today it never flows back); Algorithmic leverage (encode tier-1 pattern-matching and the escalate/answer judgment).
+3. Rewrite: How do we use the answers CloudServe already has to resolve tickets at first contact, encode when it is safe to answer, and turn every escalation into knowledge that resolves the next similar ticket, and the recurring causes that create them?
+4. Equation: Resolution = (Tickets + 29 articles x Routing judgment) ^ Feedback from every resolved escalation.
+5. First principles: most tickets are already-solved questions, not new problems. JTBD: customers don't want a reply, they want to keep shipping; agents want a trusted, cited draft.
+Scope note: build the support system (brief); prevention appears as a recurring-root-cause report, not a full product change (D12).
+
+**Extraordinary (upstream cause):** CloudServe already holds the answer to ~71% of tickets in 29 reviewed articles, yet only 44% are resolved at first contact and 56% are escalated when only 38% need it. Articles are titled in technical language while customers write in business language, so tier-1 agents can't find them, can't trust their own drafts, and escalate without context, where tier 2 restarts discovery. What tier 2 learns never flows back into the articles, so private, unreviewed snippets replace the standard answer. And the queue is worked by age, not impact, so an outage waits behind a pagination question. Each avoidable escalation costs ~4x a resolved ticket.Each resolved escalation feeds back as reviewed knowledge, and recurring root causes are reported so CloudServe can remove them at source.
+
 
 Levers applied: economic (4x cost, FCR gap), data liquidity (71% answerable, ignored urgency), algorithmic (route/confidence decision), network effect (tier-2 feedback loop), JTBD (find + trust + hand over, not "a chatbot").

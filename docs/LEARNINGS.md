@@ -7,3 +7,4 @@
 | 2026-11-02 | Category is better as a metadata filter than as a chunking unit | Chunking discussion |
 | 2026-11-02 | Top-k results can all come from one article, so count unique doc_ids | First Chroma search test |
 | 2026-11-02 | Build-before-discovery is a risk; setup only until evidence exists | Own concern, confirmed |
+| 2026-11-04 | Never delete or reuse IDs. Mark items resolved and give new items the next number, so traceability doesn't break. | Own concern, confirmed |
