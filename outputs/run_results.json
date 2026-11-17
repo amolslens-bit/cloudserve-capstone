@@ -1,0 +1,233 @@
+[
+  {
+    "ticket_id": "DEV-0069",
+    "customer_tier": "standard",
+    "intent": "sso_configuration",
+    "urgency": "medium",
+    "confidence": 0.89,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-003",
+      "DOC-AUTH-002",
+      "DOC-AUTH-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can do this in a few steps:\n1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.\n2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.\n3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.\n4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",
+    "cited": "DOC-AUTH-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 49174
+  },
+  {
+    "ticket_id": "DEV-0292",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": true,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "billing dispute or data commitment flagged",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify"
+    ],
+    "latency_ms": 2152
+  },
+  {
+    "ticket_id": "DEV-0434",
+    "customer_tier": "business",
+    "intent": "api_usage_question",
+    "urgency": "medium",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-002",
+      "DOC-DATA-001",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Use cursor pagination:\n1. Keep the page size at or below 200.\n2. Pass the next_cursor value from each response as the cursor parameter of the next request.\n3. Stop when next_cursor is null.\n4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",
+    "cited": "DOC-API-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 4596
+  },
+  {
+    "ticket_id": "DEV-0411",
+    "customer_tier": "standard",
+    "intent": "billing_query",
+    "urgency": "low",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-BILL-001",
+      "DOC-BILL-002",
+      "DOC-BILL-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Here\u2019s how to see what the charges are for:\n1. Open the usage breakdown for the period, which itemises charges by service and by environment.\n2. Look for resources in staging or development environments, which are billed at the same rate as production.\n3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.\n4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",
+    "cited": "DOC-BILL-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 10302
+  },
+  {
+    "ticket_id": "DEV-0392",
+    "customer_tier": "standard",
+    "intent": "unclear_request",
+    "urgency": "high",
+    "confidence": 0.0,
+    "billing_dispute": true,
+    "data_commitment_request": true,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "must-not-auto-respond intent: unclear_request",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "model_used": "none",
+    "steps": [
+      "prepare",
+      "classify"
+    ],
+    "latency_ms": 9050
+  },
+  {
+    "ticket_id": "DEV-0033",
+    "customer_tier": "standard",
+    "intent": "sso_configuration",
+    "urgency": "high",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-003",
+      "DOC-AUTH-002",
+      "DOC-AUTH-001"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "no reviewed article covers the question",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": 0.0,
+    "review": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft"
+    ],
+    "latency_ms": 15234
+  }
+]

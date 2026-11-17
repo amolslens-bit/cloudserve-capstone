@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS decisions (
     route           TEXT,      -- auto_respond or escalate
     reason          TEXT,      -- why this route was taken
     model_used      TEXT,      -- primary or fallback model
-    latency_ms      INTEGER
+    latency_ms      INTEGER,
     customer_tier     TEXT,
     guardrails_run    INTEGER,   -- 1 = yes, 0 = no
     guardrail_result  TEXT,      -- JSON of each check's outcome
