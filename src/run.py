@@ -20,7 +20,7 @@ from pathlib import Path
 from decision_log import connect, log_decision
 from pipeline import process
 
-PROMPT_VERSION = "PR-01 1.1, PR-05 1.1, PR-04 1.0, PR-06 1.0, PR-02 1.0"
+PROMPT_VERSION = "PR-01 1.1, PR-05 1.1, PR-04 1.0, PR-06 1.0, PR-02 1.0, PR-03 1.1"
 PAUSE_S = 3.5               # gap between tickets, keeps under per-minute limits
 RETRY_WAITS_S = [30, 60, 120]  # waits before retrying when both models fail
 DOWN_AFTER = 3              # this many tickets in a row with no model = provider down
@@ -37,6 +37,7 @@ def escalation(ticket_id, tier, reason, tier_name=None):
                         "unsure_about": f"Escalated because: {reason}.", "summary_by": "code fallback",
                         "reason": reason, "articles_checked": [], "draft": ""},
             "unclear_because": None, "clarifying_question": None,
+            "impact": "not assessed", "impact_reason": None,
             "steps": ["error"], "latency_ms": 0}
 
 

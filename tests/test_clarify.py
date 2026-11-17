@@ -72,7 +72,9 @@ def _setup(monkeypatch, cls, review_verdict="pass"):
     monkeypatch.setattr(pipeline, "review", lambda reply, art: {"verdict": review_verdict, "problems": []})
     monkeypatch.setitem(pipeline.DOCS, "DOC-1", {"content": "full"})
     monkeypatch.setattr(pipeline, "summarize",
-                        lambda *a: {"summary": "s", "unsure_about": "u", "summary_by": "fake"})
+                        lambda *a, **k: {"summary": "s", "unsure_about": "u", "summary_by": "fake"})
+    monkeypatch.setattr(pipeline, "assess",
+                        lambda *a, **k: {"impact": "not assessed", "reason": "mocked", "impact_by": "fake"})
     return calls
 
 

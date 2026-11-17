@@ -1,0 +1,144 @@
+[
+  {
+    "ticket_id": "DEV-0035",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "security_incident",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "must-not-auto-respond intent: security_incident",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Engineer suspects their credentials may have been exposed in a breach at another service and is asking what actions to take.",
+      "unsure_about": "This is a security incident, which must not be auto\u2011responded.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: security_incident",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "medium",
+      "impact_reason": "scale not stated",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "medium",
+    "impact_reason": "scale not stated",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 5054
+  },
+  {
+    "ticket_id": "DEV-0283",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "configuration_help",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-004",
+      "DOC-DEPLOY-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.\n2. Store anything sensitive as a secret rather than a variable.\n3. Review the environment overrides page, which lists values that differ from the defaults for each environment.\n4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.",
+    "cited": "DOC-DEPLOY-004",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 3951
+  },
+  {
+    "ticket_id": "DEV-0168",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "feature_request",
+    "urgency": "low",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "must-not-auto-respond intent: feature_request",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "AI summary could not be produced; please read the ticket.",
+      "unsure_about": "Escalated because: must-not-auto-respond intent: feature_request.",
+      "summary_by": "code fallback",
+      "reason": "must-not-auto-respond intent: feature_request",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "A how-to/roadmap question; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "A how-to/roadmap question; nothing is broken.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 7774
+  }
+]

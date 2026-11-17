@@ -1,0 +1,38 @@
+[
+  {
+    "ticket_id": "DEV-0035",
+    "channel": "chat",
+    "subject": "",
+    "body": "One of our engineers believes their credentials may have been exposed in a breach at another service. What should we be doing right now?",
+    "received_at": "2026-05-09T03:40:00Z",
+    "customer_id": "CUST-1086",
+    "customer_name": "Oscar Silva",
+    "customer_tier": "standard",
+    "customer_region": "europe",
+    "language_fluency": "fluent"
+  },
+  {
+    "ticket_id": "DEV-0283",
+    "channel": "email",
+    "subject": "Environment variable not being read",
+    "body": "Our staging environment is picking up production configuration values. I cannot work out where the override is coming from.",
+    "received_at": "2026-04-14T14:04:00Z",
+    "customer_id": "CUST-1107",
+    "customer_name": "Rosa Lindqvist",
+    "customer_tier": "standard",
+    "customer_region": "asia_pacific",
+    "language_fluency": "fluent"
+  },
+  {
+    "ticket_id": "DEV-0168",
+    "channel": "chat",
+    "subject": "",
+    "body": "are staged rollouts on roadmap? We want to move traffic gradually rather than all at once. please tell what to do.",
+    "received_at": "2026-03-22T00:54:00Z",
+    "customer_id": "CUST-1218",
+    "customer_name": "Wanjiru Silva",
+    "customer_tier": "standard",
+    "customer_region": "europe",
+    "language_fluency": "non_fluent"
+  }
+]

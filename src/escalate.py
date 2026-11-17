@@ -15,7 +15,7 @@ def fallback(reason):
             "unsure_about": f"Escalated because: {reason}.", "summary_by": "code fallback"}
 
 
-def summarize(ticket, cls, articles, ans, reason):
+def summarize(ticket, cls, articles, ans, reason, impact="not assessed"):
     if cls.get("model_used") == "none":        # models already down: don't wait again
         return fallback(reason)
     draft = "yes" if ans and ans.get("answer") else "none"
@@ -25,7 +25,7 @@ def summarize(ticket, cls, articles, ans, reason):
                     .replace("{intent}", cls["intent"])
                     .replace("{confidence}", str(cls["confidence"]))
                     .replace("{urgency}", cls["urgency"])
-                    .replace("{impact}", "not assessed")          # PR-03 not built yet
+                    .replace("{impact}", impact or "not assessed")
                     .replace("{articles}", ", ".join(a["doc_id"] for a in articles) or "none")
                     .replace("{draft}", draft)
                     .replace("{reason}", reason))
