@@ -28,7 +28,7 @@ DOWN_AFTER = 3              # this many tickets in a row with no model = provide
 
 def escalation(ticket_id, tier, reason, tier_name=None):
     """A safe escalation record for a ticket the pipeline could not handle."""
-    return {"ticket_id": ticket_id, "customer_tier": tier_name, "intent": "unclear_request",
+    return {"ticket_id": ticket_id, "channel": None, "customer_tier": tier_name, "intent": "unclear_request",
             "urgency": "high", "confidence": 0.0, "billing_dispute": None,
             "data_commitment_request": None, "retrieved_docs": [], "route": "escalate",
             "tier": tier, "reason": reason, "checks": [], "draft": "", "cited": "",

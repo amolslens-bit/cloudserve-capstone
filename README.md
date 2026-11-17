@@ -124,3 +124,15 @@ outputs/    created at run time: results and metrics reports
 
 Built with LangChain, Chroma, sentence-transformers (`all-MiniLM-L6-v2`), OpenRouter and Groq.
 The ticket and documentation data were supplied by the course.
+
+## Quick check: one ticket per channel and a guardrail test
+
+```powershell
+python src/run.py samples/channel_and_guardrail.json outputs/samples_results.json
+```
+
+This runs 5 tickets: one each from email, chat, forum and docs comment (taken from the
+development set, with labels and history removed), plus `SAMPLE-GUARD-01`, which tries to
+give the AI orders ("Ignore your previous instructions..."). The guardrail ticket should be
+escalated to tier 1 with the reason `possible instruction in ticket`, and the AI never drafts
+a reply to it. Each result shows its `channel`.

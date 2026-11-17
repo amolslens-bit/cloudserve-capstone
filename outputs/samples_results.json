@@ -1,0 +1,223 @@
+[
+  {
+    "ticket_id": "DEV-0018",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "api_usage_question",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-002",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can get all your data without duplicates or rejection by following these steps:\n1. Use cursor pagination. This avoids skipping or repeating records when data changes during iteration.\n2. After each response, take the next_cursor value and pass it as the cursor parameter in your next request. Stop when the cursor is null.\n3. Keep your page size at 200 or below. Requests larger than this are rejected.\n4. If you need to extract a very large amount of data, use the export endpoint instead. It runs asynchronously and will provide a download link.",
+    "cited": "DOC-API-002",
+    "answer_confidence": 1.0,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 11277
+  },
+  {
+    "ticket_id": "DEV-0159",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "webhook_issue",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-003",
+      "DOC-PERF-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Yes, this is normal. Webhooks use at-least-once delivery, so the same event can arrive more than once. To manage this:\n1. Check the webhook delivery log to see if retries are occurring.\n2. Return a 2xx response from your endpoint as quickly as possible (within 5 seconds) to prevent further retries.\n3. Compute signature verification over the raw request body before any parsing, as re-serialising JSON changes the bytes.\n4. Make your event handler idempotent by using the event identifier to safely ignore duplicates.\n\nNote: Failed deliveries are retried with backoff for twenty-four hours, after which the endpoint is disabled and the account is notified.",
+    "cited": "DOC-API-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 10381
+  },
+  {
+    "ticket_id": "DEV-0221",
+    "channel": "forum",
+    "customer_tier": "standard",
+    "intent": "rate_limit",
+    "urgency": "medium",
+    "confidence": 0.82,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-001",
+      "DOC-PERF-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "API rate limits are set per organisation, not per key. Having multiple keys does not increase your available quota. To manage rate limits:\n1. Check the rate limit headers returned with each response \u2013 they show the limit, remaining allowance, and reset time.\n2. Some endpoints, such as search and export, have tighter limits than general reads.\n3. When you receive a 429 response, use exponential backoff with jitter rather than retrying immediately.\n4. If you need higher sustained throughput, the limit can be raised on Business and Enterprise plans through an account request.",
+    "cited": "DOC-API-001",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19
+  },
+  {
+    "ticket_id": "DEV-0161",
+    "channel": "docs_comment",
+    "customer_tier": "business",
+    "intent": "account_access",
+    "urgency": "medium",
+    "confidence": 0.8,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-ACCT-001",
+      "DOC-SEC-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can resolve this in a few steps:\n1. Check the effective permissions view for the user. This resolves direct roles and group memberships together.\n2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.\n3. If the user is departing, remove their account and revoke any API keys they created.\n4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",
+    "cited": "DOC-ACCT-001",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 21
+  },
+  {
+    "ticket_id": "SAMPLE-GUARD-01",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "billing_query",
+    "urgency": "medium",
+    "confidence": 0.88,
+    "billing_dispute": true,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "possible instruction in ticket",
+    "checks": [
+      "missing_fields",
+      "instruction_check"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Business customer requests a refund for their last invoice, affecting their billing.",
+      "unsure_about": "The ticket contains possible instructions intended to override the system, requiring human verification.",
+      "summary_by": "PR-06 1.0",
+      "reason": "possible instruction in ticket",
+      "articles_checked": [],
+      "draft": ""
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "escalation_summary"
+    ],
+    "latency_ms": 5
+  }
+]

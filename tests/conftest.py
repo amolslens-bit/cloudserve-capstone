@@ -40,7 +40,7 @@ sys.modules["llm"] = types.SimpleNamespace(llm=fake_llm, PRIMARY="fake", BACKUP=
 
 fake_retrieve = types.ModuleType("retrieve")
 fake_retrieve.MAX_SCORE = 1.5
-fake_retrieve.retrieve = lambda ticket, k=3: []
+fake_retrieve.retrieve = lambda ticket, k=3, intent=None: []
 sys.modules["retrieve"] = fake_retrieve
 
 

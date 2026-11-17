@@ -10,9 +10,18 @@ MAX_SCORE = 1.5
 emb = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 db = Chroma(collection_name="kb_structure", embedding_function=emb, persist_directory=STORE)
 
-def retrieve(ticket, k=3):
-    """Return up to k different relevant articles, best match first. May return none."""
+def build_query(ticket, intent=None):
+    """Search text. The intent from PR-01 is added in front, because customers often don't
+    use the product's words (DEV-0159 says "same event coming many times", never "webhook")."""
     query = f"{ticket['subject'] or ''} {ticket['body']}"
+    if intent and intent != "unclear_request":
+        query = f"{intent.replace('_', ' ')}: {query}"
+    return query
+
+
+def retrieve(ticket, k=3, intent=None):
+    """Return up to k different relevant articles, best match first. May return none."""
+    query = build_query(ticket, intent)
     hits = db.similarity_search_with_score(query, k=12)
     seen, results = set(), []
     for doc, score in hits:

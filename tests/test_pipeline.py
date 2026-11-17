@@ -14,7 +14,7 @@ def setup(monkeypatch, cls, review_verdict="pass"):
     calls = []
     monkeypatch.setattr(pipeline, "prepare", lambda r: dict(PREP))
     monkeypatch.setattr(pipeline, "classify", lambda t: dict(cls))
-    monkeypatch.setattr(pipeline, "retrieve", lambda t, k=3: calls.append(k) or [ART])
+    monkeypatch.setattr(pipeline, "retrieve", lambda t, k=3, intent=None: calls.append(k) or [ART])
     monkeypatch.setattr(pipeline, "draft_answer", lambda t, i, a: dict(ANS))
     monkeypatch.setattr(pipeline, "review", lambda reply, art: {"verdict": review_verdict, "problems": []})
     monkeypatch.setitem(pipeline.DOCS, "DOC-1", {"content": "full"})

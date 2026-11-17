@@ -29,7 +29,7 @@ def process(raw_ticket):
     # Gates 1-6 need no draft. If one fails, escalate now and save AI calls.
     early = route(t, cls)
     if early["reason"] == EARLY_EXIT_OK:
-        arts = retrieve(t, k=2)   # 2 articles keeps Groq under its token cap
+        arts = retrieve(t, k=2, intent=cls["intent"])   # 2 articles keeps Groq under its token cap
         ans = draft_answer(t, cls["intent"], arts)
         steps += ["retrieve", "draft"]
         if ans.get("covered"):
@@ -49,7 +49,7 @@ def process(raw_ticket):
         steps.append("escalation_summary")
 
     return {
-        "ticket_id": t["ticket_id"], "customer_tier": t["customer_tier"],
+        "ticket_id": t["ticket_id"], "channel": raw_ticket.get("channel"), "customer_tier": t["customer_tier"],
         "intent": cls["intent"], "urgency": cls["urgency"], "confidence": cls["confidence"],
         "billing_dispute": cls["billing_dispute"], "data_commitment_request": cls["data_commitment_request"],
         "retrieved_docs": [a["doc_id"] for a in arts],
