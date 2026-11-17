@@ -1,0 +1,90 @@
+[
+  {
+    "ticket_id": "DEV-0134",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "unclear_request",
+    "urgency": "medium",
+    "confidence": 0.3,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "must-not-auto-respond intent: unclear_request",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Business customer says something is not working and requests help.",
+      "unsure_about": "The request is unclear, so a person must handle it.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: unclear_request",
+      "articles_checked": [],
+      "draft": "",
+      "unclear_because": "The customer does not say what is not working.",
+      "clarifying_question": "Which CloudServe feature or service is not working for you?",
+      "question_by": "PR-02 1.0"
+    },
+    "unclear_because": "The customer does not say what is not working.",
+    "clarifying_question": "Which CloudServe feature or service is not working for you?",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "clarify",
+      "escalation_summary"
+    ],
+    "latency_ms": 4096
+  },
+  {
+    "ticket_id": "DEV-0413",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "unclear_request",
+    "urgency": "medium",
+    "confidence": 0.3,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "must-not-auto-respond intent: unclear_request",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Customer says the service is not working and requests help.",
+      "unsure_about": "The intent is unclear, so this ticket needs a person to investigate.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: unclear_request",
+      "articles_checked": [],
+      "draft": "",
+      "unclear_because": "The customer does not specify which CloudServe service or feature is failing.",
+      "clarifying_question": "Which CloudServe service or feature is not working for you?",
+      "question_by": "PR-02 1.0"
+    },
+    "unclear_because": "The customer does not specify which CloudServe service or feature is failing.",
+    "clarifying_question": "Which CloudServe service or feature is not working for you?",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "clarify",
+      "escalation_summary"
+    ],
+    "latency_ms": 3746
+  }
+]

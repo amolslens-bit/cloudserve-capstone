@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 from answer import DOCS, draft_answer
+from clarify import clarify, is_unclear_escalation
 from classify import classify
 from decision_log import connect, log_decision
 from escalate import summarize
@@ -39,6 +40,12 @@ def process(raw_ticket):
     else:
         result = early
 
+    # FR-03: a suggested clarifying question, only for unclear tickets
+    question = None
+    if is_unclear_escalation(result, cls):
+        question = clarify(t, cls)
+        steps.append("clarify")
+
     # FR-11: every escalation carries the handover package (PR-06)
     package = None
     if result["route"] == "escalate":
@@ -46,6 +53,10 @@ def process(raw_ticket):
         package.update({"reason": result["reason"],
                         "articles_checked": [f"{a['doc_id']} {a['title']}" for a in arts],
                         "draft": (ans or {}).get("answer", "")})
+        if question:
+            package.update({"unclear_because": question["unclear_because"],
+                            "clarifying_question": question["clarifying_question"],
+                            "question_by": question["question_by"]})
         steps.append("escalation_summary")
 
     return {
@@ -56,7 +67,10 @@ def process(raw_ticket):
         "route": result["route"], "tier": result["tier"], "reason": result["reason"],
         "checks": result["checks"], "draft": (ans or {}).get("answer", ""),
         "cited": (ans or {}).get("article_id", ""), "answer_confidence": (ans or {}).get("confidence"),
-        "review": rev, "package": package, "model_used": cls.get("model_used"), "steps": steps,
+        "review": rev, "package": package,
+        "unclear_because": (question or {}).get("unclear_because"),
+        "clarifying_question": (question or {}).get("clarifying_question"),
+        "model_used": cls.get("model_used"), "steps": steps,
         "latency_ms": int((time.time() - start) * 1000),
     }
 
@@ -75,7 +89,7 @@ if __name__ == "__main__":
                      route=r["route"], reason=r["reason"], model_used=r["model_used"],
                      latency_ms=r["latency_ms"], customer_tier=r["customer_tier"],
                      guardrails_run=1, guardrail_result=json.dumps({"checks": r["checks"], "review": r["review"]}),
-                     steps=json.dumps(r["steps"]), prompt_version="PR-01 1.1, PR-05 1.1, PR-04 1.0, PR-06 1.0")
+                     steps=json.dumps(r["steps"]), prompt_version="PR-01 1.1, PR-05 1.1, PR-04 1.0, PR-06 1.0, PR-02 1.0")
         lab = rt["labels"]
         ok = r["route"] == lab["expected_route"]
         print("OK " if ok else "XX ", r["ticket_id"], "| got", r["route"], r["tier"] or "",

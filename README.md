@@ -20,7 +20,7 @@ All commands below are run from the project's main folder (the one holding this 
 ## 1. Get the code
 
 ```powershell
-git clone <REPO_URL> capstone
+git clone https://github.com/amolslens-bit/cloudserve-capstone.git capstone
 cd capstone
 ```
 
@@ -52,7 +52,7 @@ python src/build_index.py
 ```
 
 This embeds the help articles in `data/documentation.json` into `storage/chroma`. The first run
-downloads the embedding model (`all-MiniLM-L6-v2`), so it takes a few minutes.
+downloads the embedding model (`all-MiniLM-L6-v2`), so it takes a few minutes. A warning about `HF_TOKEN` is harmless and can be ignored.
 
 ## 5. Run the full system (one command)
 
