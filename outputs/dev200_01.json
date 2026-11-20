@@ -1,0 +1,2545 @@
+[
+  {
+    "ticket_id": "DEV-0004",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "rollback_request",
+    "urgency": "high",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-002",
+      "DOC-DEPLOY-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can roll back in a few steps:\n1. Open the revisions page for the service and identify the last revision that was healthy.\n2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place.\n3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect.\n4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still fresh.",
+    "cited": "DOC-DEPLOY-002",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 268
+  },
+  {
+    "ticket_id": "DEV-0008",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "authentication_failure",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-002",
+      "DOC-AUTH-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Here are steps to resolve the MFA code rejection:\n1. Check that automatic time synchronisation is enabled on the device generating the code. Drift is the most common cause.\n2. If the device is lost, sign in with one of your recovery codes and then re\u2011enrol a new device from the security page.\n3. If no recovery codes are available, an account administrator can reset multi\u2011factor authentication for that user from the team members page.\n4. If you are the sole administrator and have no recovery codes, identity verification through support is required and takes up to one business day.",
+    "cited": "DOC-AUTH-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 5497
+  },
+  {
+    "ticket_id": "DEV-0009",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "rollback_request",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-002",
+      "DOC-DEPLOY-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To revert to an earlier revision:\n1. Open the revisions page for the service and find the last healthy revision.\n2. Click **roll back** on that revision. Traffic will shift within about thirty seconds and no rebuild is needed.\n3. If the release included a database migration, roll the migration back before the service, otherwise the older code may encounter an unexpected schema.\n4. Record the incident and the reason for the rollback before deploying a fix.",
+    "cited": "DOC-DEPLOY-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 4294
+  },
+  {
+    "ticket_id": "DEV-0012",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_export",
+    "urgency": "medium",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-001",
+      "DOC-DEPLOY-002"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "reply review failed or did not run",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Large exports are queued and processed asynchronously. Jobs covering more than a million records commonly take several minutes.\n1. Check the exports page for the job status.\n2. If the job is still queued, wait a few more minutes.\n3. Do not cancel the job unless it has failed or you need a fresh snapshot. Canceling will require starting a new export.",
+    "cited": "DOC-DATA-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "block",
+      "problems": [
+        "States a step not in article"
+      ]
+    },
+    "package": {
+      "summary": "Business customer started a data export of about two million records, which remains queued, and is asking whether to cancel and retry.",
+      "unsure_about": "The automated reply could not be generated, so a person must review and respond.",
+      "summary_by": "PR-06 1.0",
+      "reason": "reply review failed or did not run",
+      "articles_checked": [
+        "DOC-DATA-001 Exporting account data and scheduled extracts",
+        "DOC-DEPLOY-002 Rolling back a failed release"
+      ],
+      "draft": "Large exports are queued and processed asynchronously. Jobs covering more than a million records commonly take several minutes.\n1. Check the exports page for the job status.\n2. If the job is still queued, wait a few more minutes.\n3. Do not cancel the job unless it has failed or you need a fresh snapshot. Canceling will require starting a new export.",
+      "impact": "medium",
+      "impact_reason": "A single export job is stuck, affecting that operation but not the overall service.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "medium",
+    "impact_reason": "A single export job is stuck, affecting that operation but not the overall service.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 33847
+  },
+  {
+    "ticket_id": "DEV-0014",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "sso_configuration",
+    "urgency": "high",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-003",
+      "DOC-AUTH-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.\n2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.\n3. Enable just\u2011in\u2011time provisioning if new users should be created on first login, and set a default role for provisioned users.\n4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",
+    "cited": "DOC-AUTH-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 31587
+  },
+  {
+    "ticket_id": "DEV-0015",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "security_incident",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "must-not-auto-respond intent: security_incident",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Customer reports that a former employee still has access to their account and has made API calls, indicating a possible compromise. The issue is urgent.",
+      "unsure_about": "The ticket is a security incident that must not be auto-responded, requiring a person.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: security_incident",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "high",
+      "impact_reason": "Possible account compromise and unauthorized API activity indicate a security breach.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "high",
+    "impact_reason": "Possible account compromise and unauthorized API activity indicate a security breach.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 13392
+  },
+  {
+    "ticket_id": "DEV-0016",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "security_incident",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "must-not-auto-respond intent: security_incident",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Enterprise customer reports an engineer accidentally exposed an API key in a public repository and requests a key rotation without service interruption.",
+      "unsure_about": "The ticket is flagged as a security incident, which must be handled by a person and cannot be auto\u2011responded.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: security_incident",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "high",
+      "impact_reason": "Exposed key poses potential data breach risk.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "high",
+    "impact_reason": "Exposed key poses potential data breach risk.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 20359
+  },
+  {
+    "ticket_id": "DEV-0017",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "account_access",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-ACCT-001",
+      "DOC-SEC-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Open the effective permissions view for the user to see all direct roles and group memberships.\n2. Verify that the user\u2019s invitation was accepted; pending invitations are shown separately and expire after seven days.\n3. If the role was granted at the project level instead of the organisation level, re\u2011grant it at the correct scope.\n4. Consider using group membership for easier review of access.",
+    "cited": "DOC-ACCT-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19999
+  },
+  {
+    "ticket_id": "DEV-0019",
+    "channel": "docs_comment",
+    "customer_tier": "standard",
+    "intent": "account_access",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-ACCT-001",
+      "DOC-SEC-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To fully remove a departing team member:\n1. Check the effective permissions view for the user.\n2. Confirm the invitation was accepted.\n3. Remove the user from the team and revoke any API keys they created.\n4. Prefer group membership for future role assignments so access can be reviewed in one place.",
+    "cited": "DOC-ACCT-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 26718
+  },
+  {
+    "ticket_id": "DEV-0020",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "sso_configuration",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-003",
+      "DOC-ONB-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can resolve this by following these steps:\n1. Compare the Assertion Consumer Service URL in your identity provider with the value shown on the CloudServe SSO settings page; they must match exactly.\n2. Inspect a failing SAML assertion and confirm the NameID is the user's email address in lower\u2011case.\n3. Enable just\u2011in\u2011time (JIT) provisioning on the SAML connection and set a default role for provisioned users.\n4. Keep at least one administrator account with password access while testing, to avoid locking the organization out.",
+    "cited": "DOC-AUTH-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 22390
+  },
+  {
+    "ticket_id": "DEV-0025",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "deployment_failure",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-001",
+      "DOC-ONB-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The issue is likely a health\u2011check failure. Follow these steps:\n1. Confirm the container is listening on the port declared in the service definition. A mismatch causes a timeout.\n2. Increase the initial delay if the app needs time to warm up before it can answer. Thirty seconds is a good starting point.\n3. Compare the environment variables present in the deployment against those the application requires. Missing configuration can cause a silent startup failure.\n4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+    "cited": "DOC-DEPLOY-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 21730
+  },
+  {
+    "ticket_id": "DEV-0027",
+    "channel": "docs_comment",
+    "customer_tier": "standard",
+    "intent": "api_usage_question",
+    "urgency": "medium",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-002",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To pull a very large extract:\n1. Use cursor pagination and keep the page size at or below 200.\n2. Pass the `next_cursor` value from each response as the `cursor` parameter of the next request, stopping when it is null.\n3. For very large extracts, use the export endpoint. It runs asynchronously and returns a download link.",
+    "cited": "DOC-API-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 29029
+  },
+  {
+    "ticket_id": "DEV-0028",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "data_export",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "warning words: audit",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Customer wants to export access records covering the last six months and asks whether that period is within the retention policy.",
+      "unsure_about": "The ticket contains the word \"audit\", which is a warning word that requires escalation to a person.",
+      "summary_by": "PR-06 1.0",
+      "reason": "warning words: audit",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "A request for compliance data; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "A request for compliance data; nothing is broken.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 21239
+  },
+  {
+    "ticket_id": "DEV-0029",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "rate_limit",
+    "urgency": "high",
+    "confidence": 0.94,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-001",
+      "DOC-PERF-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The 429 error means you have hit the API rate limit. The limit is applied per organisation, not per key, so having three keys does not increase the quota.\n\n1. Check the rate\u2011limit headers in each response to see the current limit, remaining allowance, and reset time.\n2. Verify if the endpoint you are calling has a specific, lower limit (e.g., export endpoints are tighter than read endpoints).\n3. If you receive a 429, use exponential backoff with jitter before retrying.\n4. If you need a higher sustained rate, request a limit increase on Business or Enterprise plans.",
+    "cited": "DOC-API-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 14979
+  },
+  {
+    "ticket_id": "DEV-0033",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "sso_configuration",
+    "urgency": "high",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-003",
+      "DOC-AUTH-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To fix the error page after SAML login:\n1. Compare the assertion consumer service URL in your identity provider with the value shown on the SSO settings page. They must match exactly, including the trailing path.\n2. Inspect a failing assertion and confirm that the NameID is the user\u2019s email address in lower case.\n3. If you want new users to be created automatically, enable just\u2011in\u2011time provisioning and set a default role for provisioned users.\n4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",
+    "cited": "DOC-AUTH-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 20816
+  },
+  {
+    "ticket_id": "DEV-0036",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "deployment_failure",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-001",
+      "DOC-ONB-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can try the following steps:\n1. Verify the container is listening on the port declared in the service definition. A port mismatch causes health\u2011check timeouts.\n2. Increase the initial delay for the health check (e.g., set it to 30\u202fseconds) so the application has time to warm up before the check runs.\n3. Compare the environment variables in the deployment with those required by the application; add any missing variables.\n4. Inspect the logs of the failed (rolled\u2011back) revision rather than the running one to see any startup errors.",
+    "cited": "DOC-DEPLOY-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 12962
+  },
+  {
+    "ticket_id": "DEV-0037",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "integration_help",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-INT-002",
+      "DOC-INT-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can resolve this in a few steps:\n1. Open the forwarding status page to see the last successful delivery and any error returned by the destination.\n2. Verify the destination credentials separately; expired credentials are the most common cause of a complete stop.\n3. If the forwarding has paused, resume it manually now that the destination is healthy (forwarding pauses after one hour of consecutive failures and must be resumed manually).\n4. Remember that metrics can be delayed up to two minutes because they are aggregated before being sent.",
+    "cited": "DOC-INT-002",
+    "answer_confidence": 0.97,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19158
+  },
+  {
+    "ticket_id": "DEV-0044",
+    "channel": "forum",
+    "customer_tier": "business",
+    "intent": "quota_or_overage",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-BILL-003",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Go to the billing page and check your current period usage against the plan allowance.\n2. Decide whether you want a hard spend cap (which stops the service) or overage (which continues at the listed rate). Production workloads usually need overage.\n3. Set alerts at 50%, 80%, and 95% of your allowance so you\u2019re warned before the cap is reached.\n4. If the cap has stopped your service, raise it immediately from the billing page; the service will resume within a minute.",
+    "cited": "DOC-BILL-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 22705
+  },
+  {
+    "ticket_id": "DEV-0045",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "authentication_failure",
+    "urgency": "high",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-001",
+      "DOC-AUTH-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Check if your account is locked by going to the security page of the console. A locked account shows a red banner and unlocks automatically after thirty minutes.\n2. Clear cookies for the CloudServe domain, or open a private browsing window, then try logging in again.\n3. If you are using the CLI, run `cloudserve auth logout` followed by `cloudserve auth login` to discard any cached token.\n4. If the account remains locked and you need immediate access, an administrator on the account can release the lock from the team members page.",
+    "cited": "DOC-AUTH-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19542
+  },
+  {
+    "ticket_id": "DEV-0047",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "account_access",
+    "urgency": "high",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-001",
+      "DOC-SEC-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Check if your account is locked by going to the security page of the console. A locked account shows a red banner and unlocks automatically after thirty minutes.\n2. Clear cookies for the CloudServe domain, or open a private browsing window, then try logging in again.\n3. If you use the CLI, run `cloudserve auth logout` followed by `cloudserve auth login` to discard any cached token.\n4. If the account remains locked and you need immediate access, an administrator on the account can release the lock from the team members page.",
+    "cited": "DOC-AUTH-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 21310
+  },
+  {
+    "ticket_id": "DEV-0048",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "quota_or_overage",
+    "urgency": "high",
+    "confidence": 0.94,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-BILL-003",
+      "DOC-API-001"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "reply review failed or did not run",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To stop the service from being throttled and allow overage charges:\n1. Go to the billing page.\n2. Raise the spend cap immediately \u2013 this will lift the hard stop.\n3. The service will resume within a minute.\nIf you prefer to keep a cap but allow overage, choose the overage option instead of a hard cap.",
+    "cited": "DOC-BILL-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "block",
+      "problems": [
+        "Offers a billing change",
+        "Promises a fix time"
+      ]
+    },
+    "package": {
+      "summary": "Enterprise customer was throttled over the weekend due to a spend cap, causing part of their product to go down, and they want to change the cap to allow overage.",
+      "unsure_about": "The automated reply review failed or did not run, so a person must review the ticket.",
+      "summary_by": "PR-06 1.0",
+      "reason": "reply review failed or did not run",
+      "articles_checked": [
+        "DOC-BILL-003 Usage limits, overage and spend controls",
+        "DOC-API-001 Understanding API rate limits and quota tiers"
+      ],
+      "draft": "To stop the service from being throttled and allow overage charges:\n1. Go to the billing page.\n2. Raise the spend cap immediately \u2013 this will lift the hard stop.\n3. The service will resume within a minute.\nIf you prefer to keep a cap but allow overage, choose the overage option instead of a hard cap.",
+      "impact": "high",
+      "impact_reason": "Part of the production service is down.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "high",
+    "impact_reason": "Part of the production service is down.",
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 32306
+  },
+  {
+    "ticket_id": "DEV-0050",
+    "channel": "docs_comment",
+    "customer_tier": "standard",
+    "intent": "billing_query",
+    "urgency": "medium",
+    "confidence": 0.9,
+    "billing_dispute": true,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "billing dispute or data commitment flagged",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Customer sees a charge for a service they do not use on this month's invoice and wants it checked.",
+      "unsure_about": "This is a billing dispute, which must be handled by a person.",
+      "summary_by": "PR-06 1.0",
+      "reason": "billing dispute or data commitment flagged",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "Billing question; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "Billing question; nothing is broken.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 21060
+  },
+  {
+    "ticket_id": "DEV-0052",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "deployment_failure",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-001",
+      "DOC-DEPLOY-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Here are the steps to fix the health\u2011check failure:\n1. Verify that the container is listening on the port declared in the service definition. A mismatch will cause a timeout.\n2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a good starting point.\n3. Check that all required environment variables are present in the deployment. Missing variables can cause a silent startup failure.\n4. Inspect the container logs from the failed revision (not the running one) to see why the health check is timing out.",
+    "cited": "DOC-DEPLOY-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 27693
+  },
+  {
+    "ticket_id": "DEV-0055",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "database_issue",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Use cursor pagination:\n1. Pass the next_cursor value from each response as the cursor parameter of the next request.\n2. Stop when next_cursor is null.\n3. Keep page size at or below 200.\n4. If you need a very large extract, use the export endpoint instead.",
+    "cited": "DOC-API-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19323
+  },
+  {
+    "ticket_id": "DEV-0059",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": true,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "billing dispute or data commitment flagged",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "A business customer is requesting written confirmation of the physical location where their data is stored.",
+      "unsure_about": "The escalation reason indicates a data commitment flag, so a person must handle this request.",
+      "summary_by": "PR-06 1.0",
+      "reason": "billing dispute or data commitment flagged",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "A request for information; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "A request for information; nothing is broken.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 17536
+  },
+  {
+    "ticket_id": "DEV-0062",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "webhook_issue",
+    "urgency": "medium",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-003",
+      "DOC-INT-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To fix the stopped log forwarding:\n1. Check the forwarding status page \u2013 it shows the last successful delivery and any error returned by the destination.\n2. Note that forwarding pauses after one hour of consecutive failures and must be resumed manually once the destination is healthy.\n3. If you see a delay, remember that metrics can be delayed up to two minutes because they are aggregated before being sent.\n4. Verify the destination credentials separately, as expired credentials are the most common cause of a complete stop.",
+    "cited": "DOC-INT-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 24458
+  },
+  {
+    "ticket_id": "DEV-0066",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "api_usage_question",
+    "urgency": "medium",
+    "confidence": 0.94,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-002",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To pull a very large extract:\n1. Use cursor pagination \u2013 pass the next_cursor from each response as the cursor parameter for the next request.\n2. Keep the page size at or below 200; larger requests are rejected.\n3. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",
+    "cited": "DOC-API-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 18895
+  },
+  {
+    "ticket_id": "DEV-0068",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "database_issue",
+    "urgency": "high",
+    "confidence": 0.94,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-PERF-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can resolve the issue with the following steps:\n1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.\n2. Reduce the per\u2011instance pool size rather than raising the limit.\n3. Look for queries that hold a transaction open across a network call to another service.\n4. Consider using a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.",
+    "cited": "DOC-PERF-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 15594
+  },
+  {
+    "ticket_id": "DEV-0071",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "webhook_issue",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-003",
+      "DOC-AUTH-004"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can resolve this by following these steps:\n1. Open the webhook delivery log in the console; it records every attempt and the response status for the last seven days.\n2. Make sure your endpoint returns a 2xx status code as quickly as possible (within 5\u202fseconds). Process the event asynchronously after responding.\n3. Compute the signature over the raw request body bytes before any parsing or re\u2011serialization. Changing the JSON bytes will invalidate the signature.\n4. Implement idempotency using the event identifier, because deliveries are retried and duplicates are expected.\n\nNote: Failed deliveries are retried with back\u2011off for up to 24\u202fhours, after which the endpoint is disabled.",
+    "cited": "DOC-API-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19940
+  },
+  {
+    "ticket_id": "DEV-0075",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "deployment_failure",
+    "urgency": "high",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-003",
+      "DOC-ONB-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Here\u2019s what you can do:\n1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the main cause.\n2. Compare the runtime version declared in your build configuration with the version you use locally.\n3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.\n4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.",
+    "cited": "DOC-DEPLOY-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 22976
+  },
+  {
+    "ticket_id": "DEV-0078",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "billing_query",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-BILL-001",
+      "DOC-BILL-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can identify the charges by reviewing the usage breakdown on your invoice:\n1. Open the usage breakdown for the period; it itemises charges by service and environment.\n2. Look for resources listed under staging or development environments\u2014they are billed at the same rate as production.\n3. Check the billing period dates at the top of the invoice; the period runs from the anniversary of your subscription date.\n4. (Optional) Set a usage alert on the billing page to notice unexpected accruals during the period rather than at the end.",
+    "cited": "DOC-BILL-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 13863
+  },
+  {
+    "ticket_id": "DEV-0080",
+    "channel": "forum",
+    "customer_tier": "business",
+    "intent": "webhook_issue",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-003",
+      "DOC-AUTH-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The signature is calculated over the raw request body, not the parsed body. Re\u2011serialising JSON changes the bytes and will invalidate the signature. Make sure you:\n1. Read the raw request body.\n2. Compute the signature on that raw data before any parsing.\n3. Return a 2xx status quickly (delivery times out after five seconds).",
+    "cited": "DOC-API-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 23894
+  },
+  {
+    "ticket_id": "DEV-0081",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "deployment_failure",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-001",
+      "DOC-ONB-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Here are the steps to resolve the issue:\n1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.\n2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.\n3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.\n4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+    "cited": "DOC-DEPLOY-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 27619
+  },
+  {
+    "ticket_id": "DEV-0084",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "api_key_issue",
+    "urgency": "low",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-INT-001",
+      "DOC-AUTH-004"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Use a service account for your CI pipeline:\n1. Create a service account instead of using a personal key.\n2. Grant the service account only the projects and permissions the pipeline needs, and review those grants when the pipeline changes.\n3. Store the credential as an encrypted secret in your pipeline provider, never in the repository.\n4. Test the pipeline credential separately from the deployment logic so authentication failures are distinguishable from deployment failures.",
+    "cited": "DOC-INT-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 26402
+  },
+  {
+    "ticket_id": "DEV-0085",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "security_incident",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "must-not-auto-respond intent: security_incident",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Business customer reports unknown activity in the audit log and unauthorized resource creation, requesting urgent assistance.",
+      "unsure_about": "This is a security incident, which must not be auto-responded.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: security_incident",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "high",
+      "impact_reason": "Possible unauthorized resource creation indicates a security breach.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "high",
+    "impact_reason": "Possible unauthorized resource creation indicates a security breach.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 21593
+  },
+  {
+    "ticket_id": "DEV-0092",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "quota_or_overage",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-BILL-003",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Go to the billing page and check your current period usage against the plan allowance.\n2. Decide whether you want a hard spend cap (which stops the service) or overage (which continues at the listed rate). Production workloads usually need overage.\n3. Set alerts at 50%, 80%, and 95% of your allowance so you\u2019re warned before the cap is reached.\n4. If a cap has stopped your service, raise it immediately from the billing page; the service will resume within a minute.",
+    "cited": "DOC-BILL-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 27204
+  },
+  {
+    "ticket_id": "DEV-0094",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "account_access",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-ACCT-001",
+      "DOC-SEC-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To remove a departing team member:\n1. Remove the user from the team.\n2. Revoke any API keys they created.",
+    "cited": "DOC-ACCT-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 20594
+  },
+  {
+    "ticket_id": "DEV-0096",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "configuration_help",
+    "urgency": "low",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-ONB-002",
+      "DOC-DATA-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To migrate an application that writes uploaded files to local disk:\n1. Externalise configuration before migrating. Anything read from a file on disk should move to environment variables or secrets.\n2. Identify local state such as uploaded files or session data and move it to object storage or the managed database first.\n3. Run the new deployment in parallel with the existing one and shift a small share of traffic before committing to the move.\n4. Plan the database migration separately from the application migration; attempting both at once makes any failure hard to diagnose.",
+    "cited": "DOC-ONB-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 28401
+  },
+  {
+    "ticket_id": "DEV-0098",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "rollback_request",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-002",
+      "DOC-API-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To quickly revert to the previous working version:\n1. Open the revisions page for the service and find the last healthy revision.\n2. Click **Roll back** on that revision. Traffic will shift in about thirty seconds and no rebuild is needed.\n3. If the release included a database migration, roll that migration back before the service, otherwise the older code may fail.\n4. Record the incident and the reason for the rollback before you deploy a fix.",
+    "cited": "DOC-DEPLOY-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 25631
+  },
+  {
+    "ticket_id": "DEV-0099",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "quota_or_overage",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-BILL-003",
+      "DOC-API-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Go to the billing page and raise the spend cap immediately \u2013 the service will resume within a minute.\n2. Decide whether you want a hard spend cap (which stops the service) or overage (which continues at the listed rate). Production workloads usually need overage.\n3. Set alerts at 50%, 80%, and 95% of your allowance so you\u2019re warned before the cap is reached.",
+    "cited": "DOC-BILL-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 30142
+  },
+  {
+    "ticket_id": "DEV-0103",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "sso_configuration",
+    "urgency": "medium",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-003",
+      "DOC-AUTH-002"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "reply review failed or did not run",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can troubleshoot the issue with these steps:\n1. Compare the Assertion Consumer Service (ACS) URL in your identity provider with the value shown on the CloudServe SSO settings page. They must match exactly, including any trailing path.\n2. Inspect a failing SAML assertion and confirm that the NameID (email) is the user's CloudServe account email in lower\u2011case.\n3. If the finance users are new, make sure Just\u2011in\u2011Time provisioning is enabled on the connection and a default role is set for provisioned users.\n4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the organisation out.",
+    "cited": "DOC-AUTH-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "block",
+      "problems": [
+        "States a fact not in article"
+      ]
+    },
+    "package": {
+      "summary": "Finance group SAML login fails with an error page while engineering group works fine; both groups appear configured identically.",
+      "unsure_about": "The system could not automatically generate a reply because the reply review failed or did not run.",
+      "summary_by": "PR-06 1.0",
+      "reason": "reply review failed or did not run",
+      "articles_checked": [
+        "DOC-AUTH-003 Single sign-on configuration with SAML providers",
+        "DOC-AUTH-002 Multi-factor authentication setup and recovery"
+      ],
+      "draft": "You can troubleshoot the issue with these steps:\n1. Compare the Assertion Consumer Service (ACS) URL in your identity provider with the value shown on the CloudServe SSO settings page. They must match exactly, including any trailing path.\n2. Inspect a failing SAML assertion and confirm that the NameID (email) is the user's CloudServe account email in lower\u2011case.\n3. If the finance users are new, make sure Just\u2011in\u2011Time provisioning is enabled on the connection and a default role is set for provisioned users.\n4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the organisation out.",
+      "impact": "medium",
+      "impact_reason": "Only the finance group is affected, not the entire user base.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "medium",
+    "impact_reason": "Only the finance group is affected, not the entire user base.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 33632
+  },
+  {
+    "ticket_id": "DEV-0104",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_export",
+    "urgency": "medium",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-001",
+      "DOC-SEC-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The export takes a snapshot of your data at the moment the job starts. Records that are created while the export is running will not be included. To check the status:\n1. Go to the exports page and see if the job is still running.\n2. If the download link has expired, request a new one from the exports page.\n3. Remember that the export only contains data that existed when the job began.\n4. If you need regular exports, set up a scheduled export that delivers to object storage.",
+    "cited": "DOC-DATA-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 23770
+  },
+  {
+    "ticket_id": "DEV-0106",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "high",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": true,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "billing dispute or data commitment flagged",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Customer is asking if backups are replicated outside the primary region for compliance review and needs a definitive answer.",
+      "unsure_about": "Because the escalation reason indicates a data commitment issue, a person must verify the data residency details.",
+      "summary_by": "PR-06 1.0",
+      "reason": "billing dispute or data commitment flagged",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "A compliance question; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "A compliance question; nothing is broken.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 12231
+  },
+  {
+    "ticket_id": "DEV-0107",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "security_incident",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [],
+    "route": "escalate",
+    "tier": 2,
+    "reason": "must-not-auto-respond intent: security_incident",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": null,
+    "review": null,
+    "package": {
+      "summary": "Business customer reports unknown activity in the audit log and unauthorized resource creation, indicating a possible account compromise.",
+      "unsure_about": "This is a security incident, which must not be auto-responded and requires a person.",
+      "summary_by": "PR-06 1.0",
+      "reason": "must-not-auto-respond intent: security_incident",
+      "articles_checked": [],
+      "draft": "",
+      "impact": "high",
+      "impact_reason": "Potential unauthorized resource creation indicates a security breach.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "high",
+    "impact_reason": "Potential unauthorized resource creation indicates a security breach.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 20858
+  },
+  {
+    "ticket_id": "DEV-0112",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "deployment_failure",
+    "urgency": "high",
+    "confidence": 0.94,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-001",
+      "DOC-ONB-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The rollback is caused by a health\u2011check timeout. Follow these steps:\n1. Verify the container listens on the port declared in the service definition.\n2. Increase the initial delay (e.g., to 30\u202fseconds) if the app needs time to warm up.\n3. Check that all required environment variables are set in the deployment.\n4. Inspect the container logs from the failed revision to see the exact failure.",
+    "cited": "DOC-DEPLOY-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 15235
+  },
+  {
+    "ticket_id": "DEV-0113",
+    "channel": "docs_comment",
+    "customer_tier": "business",
+    "intent": "data_export",
+    "urgency": "medium",
+    "confidence": 0.9,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-001",
+      "DOC-SEC-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can resolve this as follows:\n1. Open the exports page and verify the job status.\n2. If the download link has expired, request a fresh link from the same exports page. The export file is kept for seven days.\n3. Remember that the export reflects the data snapshot taken when the job started, so any records created after that are not included.\n4. For regular exports, consider setting up a scheduled export that delivers the file directly to object storage.",
+    "cited": "DOC-DATA-001",
+    "answer_confidence": 0.96,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 22624
+  },
+  {
+    "ticket_id": "DEV-0117",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "webhook_issue",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-003",
+      "DOC-AUTH-003"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "reply review failed or did not run",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The signature must be calculated over the raw request body before any parsing. \n1. Grab the raw bytes of the incoming webhook request.\n2. Compute the signature using the secret key.\n3. Compare that signature to the value in the X-Webhook-Signature header.\nIf you compute over a parsed body, the bytes change and the signature will not match.",
+    "cited": "DOC-API-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "block",
+      "problems": [
+        "States a fact not in article"
+      ]
+    },
+    "package": {
+      "summary": "Business customer reports that every webhook delivery fails signature verification, even though they compute the signature exactly as described in the documentation. They are seeing duplicate webhook deliveries as a result.",
+      "unsure_about": "The drafted reply could not be automatically approved, so a person must review it.",
+      "summary_by": "PR-06 1.0",
+      "reason": "reply review failed or did not run",
+      "articles_checked": [
+        "DOC-API-003 Webhook delivery, retries and signature verification",
+        "DOC-AUTH-003 Single sign-on configuration with SAML providers"
+      ],
+      "draft": "The signature must be calculated over the raw request body before any parsing. \n1. Grab the raw bytes of the incoming webhook request.\n2. Compute the signature using the secret key.\n3. Compare that signature to the value in the X-Webhook-Signature header.\nIf you compute over a parsed body, the bytes change and the signature will not match.",
+      "impact": "medium",
+      "impact_reason": "Signature verification fails for all webhook deliveries, breaking a key integration feature.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "medium",
+    "impact_reason": "Signature verification fails for all webhook deliveries, breaking a key integration feature.",
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 33893
+  },
+  {
+    "ticket_id": "DEV-0122",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "rollback_request",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DEPLOY-002",
+      "DOC-DEPLOY-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To revert to an earlier revision:\n1. Open the revisions page for the service and find the last healthy revision.\n2. Click **roll back** on that revision. Traffic will shift within about thirty seconds and no rebuild occurs.\n3. If the release included a database migration, roll the migration back before the service, otherwise the older code may encounter a schema it doesn\u2019t expect.\n4. Record the incident and the reason for the rollback before deploying a fix.",
+    "cited": "DOC-DEPLOY-002",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 30553
+  },
+  {
+    "ticket_id": "DEV-0125",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "webhook_issue",
+    "urgency": "high",
+    "confidence": 0.95,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-API-003",
+      "DOC-AUTH-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To fix the signature verification failure:\n1. Check the webhook delivery log to see the status and body of each attempt.\n2. Return a 2xx status as quickly as possible; deliveries time out after five seconds.\n3. Compute the signature over the raw request body before any parsing. Re\u2011serialising JSON changes the bytes and invalidates the signature.\n4. Make your handler idempotent using the event identifier, since deliveries may be retried.",
+    "cited": "DOC-API-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 21350
+  },
+  {
+    "ticket_id": "DEV-0129",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "data_export",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-001",
+      "DOC-SEC-003"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The export reflects the moment the job began, so records created during processing are not included.\n\n1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.\n2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.\n3. Note that the export captured a snapshot taken when the job started, so records created during processing are not included.\n4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.",
+    "cited": "DOC-DATA-001",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 29469
+  }
+]

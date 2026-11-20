@@ -4,11 +4,10 @@ the customer's work is affected. Never crashes.
 Fallback is 'not assessed' (safer than guessing medium) when the AI is
 down or its answer is unusable.
 """
-import json
-import re
 from pathlib import Path
 
 from llm import llm
+from parse import parse_json
 
 PROMPT = Path("prompts/pr03_impact_v1.1.txt").read_text(encoding="utf-8")
 ALLOWED = {"high", "medium", "low"}
@@ -29,7 +28,7 @@ def assess(ticket, cls=None):
                     .replace("{tier}", ticket.get("customer_tier") or ""))
     try:
         raw = llm.invoke(prompt).content
-        out = json.loads(re.search(r"\{.*\}", raw, re.S).group())
+        out = parse_json(raw)
         impact = str(out.get("impact", "")).strip().lower()
         reason = str(out.get("reason", "")).strip()
     except Exception:

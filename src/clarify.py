@@ -5,11 +5,10 @@ Known weakness (Stage 3 text kept as written): the Classifier: line sits
 inside <ticket>, so a customer could fake one in the body. Do not change
 the prompt to 'fix' this silently.
 """
-import json
-import re
 from pathlib import Path
 
 from llm import llm
+from parse import parse_json
 
 PROMPT = Path("prompts/pr02_clarify_v1.0.txt").read_text(encoding="utf-8")
 FALLBACK_QUESTION = ("Which CloudServe service or feature is affected, "
@@ -59,7 +58,7 @@ def clarify(ticket, cls):
                     .replace("{reason}", reason))
     try:
         raw = llm.invoke(prompt).content
-        out = json.loads(re.search(r"\{.*\}", raw, re.S).group())
+        out = parse_json(raw)
         because = str(out.get("unclear_because", "")).strip()
         question = str(out.get("clarifying_question", "")).strip()
     except Exception:

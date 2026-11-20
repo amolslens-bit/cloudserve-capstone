@@ -36,7 +36,23 @@ class FakeLLM:
 
 
 fake_llm = FakeLLM()
-sys.modules["llm"] = types.SimpleNamespace(llm=fake_llm, PRIMARY="fake", BACKUP="fake")
+def reset_call_log():
+    """D19: no-op in tests; the real llm.py records model and latency per call."""
+
+
+def pop_call_log():
+    return []
+
+
+def configure(mode=None):
+    return "free"
+
+
+sys.modules["llm"] = types.SimpleNamespace(
+    llm=fake_llm, PRIMARY="fake", BACKUP="fake",
+    reset_call_log=reset_call_log, pop_call_log=pop_call_log,
+    configure=configure, MODE="free", PAID_SETTINGS={},
+)
 
 fake_retrieve = types.ModuleType("retrieve")
 fake_retrieve.MAX_SCORE = 1.5

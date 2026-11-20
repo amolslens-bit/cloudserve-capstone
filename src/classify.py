@@ -1,14 +1,13 @@
 """PR-01 ticket classification (FR-02). Labels are used only to score, never sent to the AI."""
-import json
 import random
-import re
 from pathlib import Path
 
 from llm import llm
+from parse import parse_json
 from load_data import load
 from prepare import prepare
 
-PROMPT = Path("prompts/pr01_classify_v1.1.txt").read_text(encoding="utf-8")
+PROMPT = Path("prompts/pr01_classify_v1.3.txt").read_text(encoding="utf-8")
 INTENTS = {"data_export", "data_residency", "rollback_request", "deployment_failure",
            "compliance_request", "sso_configuration", "security_incident", "database_issue",
            "api_usage_question", "billing_query", "performance_degradation", "quota_or_overage",
@@ -20,8 +19,8 @@ INTENTS = {"data_export", "data_residency", "rollback_request", "deployment_fail
 def check(raw):
     """Code checks PR-01's answer. Anything broken is made safe, never trusted."""
     try:
-        out = json.loads(re.search(r"\{.*\}", raw, re.S).group())
-    except (AttributeError, ValueError):
+        out = parse_json(raw)
+    except (AttributeError, ValueError, TypeError):
         out = {}
     if out.get("intent") not in INTENTS:
         out["intent"], out["confidence"] = "unclear_request", 0.0
@@ -35,21 +34,34 @@ def check(raw):
         out["confidence"] = float(out.get("confidence", 0))
     except (TypeError, ValueError):
         out["confidence"] = 0.0
+    out["alternatives"] = clean_alternatives(out.get("alternatives"), out["intent"])
     return out
+
+
+def clean_alternatives(alts, chosen):
+    """PR-01 1.2: the other intents the AI considered (Build Spec: classify records
+    the alternatives it considered). For the record and the handover only; they
+    never change the route. Keeps at most 2 real intents, not the chosen one,
+    no repeats, confidence 0 to 1."""
+    kept = []
+    for a in alts if isinstance(alts, list) else []:
+        if not isinstance(a, dict) or a.get("intent") not in INTENTS:
+            continue
+        if a["intent"] == chosen or a["intent"] in [k["intent"] for k in kept]:
+            continue
+        try:
+            conf = min(max(float(a.get("confidence", 0)), 0.0), 1.0)
+        except (TypeError, ValueError):
+            conf = 0.0
+        kept.append({"intent": a["intent"], "confidence": conf})
+    return kept[:2]
 
 
 def classify(ticket):
     prompt = (PROMPT.replace("{subject}", ticket["subject"] or "")
                     .replace("{body}", ticket["body"])
                     .replace("{tier}", ticket["customer_tier"] or ""))
-    try:
-        reply = llm.invoke(prompt)
-    except Exception as e:
-        # Both models failed: never guess, send to a human (NFR-02)
-        result = check("")
-        result["model_used"] = "none"
-        result["error"] = str(e)[:200]
-        return result
+    reply = llm.invoke(prompt)
     result = check(reply.content)
     result["model_used"] = reply.response_metadata.get("model_name")
     return result

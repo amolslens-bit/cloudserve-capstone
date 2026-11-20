@@ -1,0 +1,286 @@
+[
+  {
+    "ticket_id": "DEV-0387",
+    "cited": "DOC-AUTH-004",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0390",
+    "cited": "DOC-ACCT-001",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [
+      "If the role was granted at the project level instead of the organisation level, re\u2011grant it at the correct scope."
+    ],
+    "pass": false
+  },
+  {
+    "ticket_id": "DEV-0394",
+    "cited": "DOC-API-001",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [
+      "per organisation",
+      "backoff"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [
+      "per organisation",
+      "backoff"
+    ],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0396",
+    "cited": "DOC-AUTH-003",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0403",
+    "cited": "DOC-AUTH-003",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0404",
+    "cited": "DOC-DEPLOY-004",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0412",
+    "cited": "DOC-DEPLOY-004",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0414",
+    "cited": "DOC-BILL-003",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0415",
+    "cited": "DOC-BILL-001",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [
+      "usage breakdown",
+      "billing period"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [
+      "usage breakdown",
+      "billing period"
+    ],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0416",
+    "cited": "DOC-DEPLOY-003",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [
+      "port",
+      "initial delay"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [
+      "port",
+      "initial delay"
+    ],
+    "unsupported_claims": [],
+    "pass": false
+  },
+  {
+    "ticket_id": "DEV-0420",
+    "cited": "DOC-DATA-001",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0423",
+    "cited": "DOC-DEPLOY-002",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0424",
+    "cited": "DOC-ONB-002",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0427",
+    "cited": "DOC-API-003",
+    "answer_model": "openai/gpt-oss-20b",
+    "must_mention": [
+      "raw body",
+      "idempotent"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [
+      "raw body",
+      "idempotent"
+    ],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0428",
+    "cited": "DOC-ONB-002",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0430",
+    "cited": "DOC-API-002",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [
+      "cursor",
+      "page size"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [
+      "cursor",
+      "page size"
+    ],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0431",
+    "cited": "DOC-API-001",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [
+      "per organisation",
+      "backoff"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [
+      "per organisation",
+      "backoff"
+    ],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0434",
+    "cited": "DOC-API-002",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [
+      "cursor",
+      "page size"
+    ],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [
+      "cursor",
+      "page size"
+    ],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0441",
+    "cited": "DOC-DATA-001",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  },
+  {
+    "ticket_id": "DEV-0443",
+    "cited": "DOC-ONB-001",
+    "answer_model": "openai/gpt-oss-120b",
+    "must_mention": [],
+    "must_not_claim_hits": [],
+    "status": "graded",
+    "covered_points": [],
+    "missing_points": [],
+    "unsupported_claims": [],
+    "pass": true
+  }
+]

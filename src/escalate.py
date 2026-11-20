@@ -1,10 +1,9 @@
 """PR-06 escalation summary (FR-11). Every escalation carries a handover package,
 so tier 1 and tier 2 never have to re-read the whole ticket. Never crashes."""
-import json
-import re
 from pathlib import Path
 
 from llm import llm
+from parse import parse_json
 
 PROMPT = Path("prompts/pr06_escalation_v1.0.txt").read_text(encoding="utf-8")
 
@@ -31,7 +30,7 @@ def summarize(ticket, cls, articles, ans, reason, impact="not assessed"):
                     .replace("{reason}", reason))
     try:
         raw = llm.invoke(prompt).content
-        out = json.loads(re.search(r"\{.*\}", raw, re.S).group())
+        out = parse_json(raw)
         summary, unsure = str(out.get("summary", "")).strip(), str(out.get("unsure_about", "")).strip()
     except Exception:
         return fallback(reason)

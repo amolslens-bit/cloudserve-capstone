@@ -1,0 +1,92 @@
+[
+  {
+    "ticket_id": "DEV-0387",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "api_key_issue",
+    "urgency": "high",
+    "confidence": 0.82,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-AUTH-004",
+      "DOC-SEC-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check the key with these steps:\n1. Open the API keys page and check the status and expiry of the key. Revoked and expired keys are listed with the date and the user who acted.\n2. Check the scopes on the key. Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints.\n3. If you need a new key, create the replacement first, deploy it, and confirm traffic has moved. Then revoke the old key.",
+    "cited": "DOC-AUTH-004",
+    "answer_confidence": 0.7,
+    "citations": [
+      {
+        "doc_id": "DOC-AUTH-004",
+        "section": "Resolution"
+      }
+    ],
+    "citation_notes": [],
+    "customer_reply": "You can check the key with these steps:\n1. Open the API keys page and check the status and expiry of the key. Revoked and expired keys are listed with the date and the user who acted.\n2. Check the scopes on the key. Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints.\n3. If you need a new key, create the replacement first, deploy it, and confirm traffic has moved. Then revoke the old key.\n\nThis reply was prepared automatically using our help article: DOC-AUTH-004 API key rotation and scope management (section: Resolution).",
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "authentication_failure",
+        "confidence": 0.12
+      },
+      {
+        "intent": "security_incident",
+        "confidence": 0.04
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "claude-haiku-5-5",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "model_calls": [
+      {
+        "model": "claude-haiku-5-5",
+        "latency_ms": 2238,
+        "ok": true
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "latency_ms": 2871,
+        "ok": true
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "latency_ms": 1361,
+        "ok": true
+      }
+    ],
+    "latency_ms": 6748
+  }
+]

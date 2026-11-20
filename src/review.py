@@ -1,9 +1,8 @@
 """PR-04 reply review (FR-06, FR-15). Anything other than a clean 'pass' counts as block."""
-import json
-import re
 from pathlib import Path
 
 from llm import llm
+from parse import parse_json
 
 PROMPT = Path("prompts/pr04_review_v1.0.txt").read_text(encoding="utf-8")
 
@@ -11,7 +10,7 @@ PROMPT = Path("prompts/pr04_review_v1.0.txt").read_text(encoding="utf-8")
 def review(reply, article_text):
     prompt = PROMPT.replace("{article}", article_text).replace("{reply}", reply)
     try:
-        out = json.loads(re.search(r"\{.*\}", llm.invoke(prompt).content, re.S).group())
+        out = parse_json(llm.invoke(prompt).content)
     except Exception as e:
         return {"verdict": "block", "problems": [f"review failed: {str(e)[:80]}"]}
     if out.get("verdict") != "pass":

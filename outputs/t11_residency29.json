@@ -1,0 +1,1867 @@
+[
+  {
+    "ticket_id": "DEV-0058",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share the following with your customer:\n1. The primary data storage region is fixed when your organisation was created, as shown on the organisation settings page.\n2. Metadata such as account names and billing records are stored centrally, regardless of the data region.\n3. Read replicas can be enabled in additional regions to reduce latency for distant users, without moving the primary data.\n4. By default, backups are replicated to a second region; this can be reviewed if a single-region requirement applies.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      },
+      {
+        "intent": "configuration_help",
+        "confidence": 0.04
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 77305
+  },
+  {
+    "ticket_id": "DEV-0059",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share this with your customer:\n1. The physical location of your primary data is determined by the region set when your organisation was created. This is shown in your organisation settings and is fixed at creation.\n2. Read replicas can be enabled in additional regions to help reduce latency for users in those regions, without moving the primary data storage.\n3. By default, backups are replicated to a second region. If your customer requires data to stay in a single region, you can review and adjust the backup replication settings.\n4. Please note that metadata such as account names and billing records are stored centrally and are separate from the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 57866
+  },
+  {
+    "ticket_id": "DEV-0061",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "no reviewed article covers the question",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": 0.0,
+    "review": null,
+    "package": {
+      "summary": "An enterprise customer is asking for written confirmation of where their data is physically stored, likely for data residency compliance.",
+      "unsure_about": "No reviewed article currently covers this data residency question, so a person must provide a tailored answer.",
+      "summary_by": "PR-06 1.0",
+      "reason": "no reviewed article covers the question",
+      "alternatives_considered": [
+        {
+          "intent": "compliance_request",
+          "confidence": 0.1
+        }
+      ],
+      "articles_checked": [
+        "DOC-DATA-003 Data residency and regional storage",
+        "DOC-DATA-001 Exporting account data and scheduled extracts"
+      ],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "It is a request for confirmation; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "It is a request for confirmation; nothing is broken.",
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 66588
+  },
+  {
+    "ticket_id": "DEV-0106",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Backups are replicated to a second region by default. If your compliance review requires data to stay in one region, you can review the backup replication setting to disable cross-region replication. The region shown in your organisation settings determines where primary data is stored, and metadata like account names and billing records is stored centrally regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 51709
+  },
+  {
+    "ticket_id": "DEV-0110",
+    "channel": "forum",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.93,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your organisation's region and settings in a few steps:\n1. Go to the organisation settings page. The region shown there is fixed at creation and determines where primary data is stored.\n2. If you need to reduce latency for users in other regions, you can enable read replicas in additional regions without moving primary storage.\n3. If your contract requires data to stay in a single region, review the backup replication setting, as cross-region replication is enabled by default.\n4. Moving an organisation to a different region requires a planned migration with support and involves a maintenance window.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.07
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 57939
+  },
+  {
+    "ticket_id": "DEV-0118",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share the following with your customer:\n1. Check the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.\n2. Metadata such as account names and billing records is stored centrally regardless of the data region.\n3. Enable read replicas in additional regions to reduce latency for distant users without moving primary storage.\n4. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.\n5. Migrating an organisation between regions requires a planned migration with support and involves a maintenance window.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 90296
+  },
+  {
+    "ticket_id": "DEV-0123",
+    "channel": "forum",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share the following with your customer:\n1. The primary data storage region is fixed when your organisation was created, as shown on the organisation settings page.\n2. Metadata such as account names and billing records are stored centrally, regardless of the data region.\n3. Read replicas can be enabled in additional regions to reduce latency for distant users, without moving the primary data.\n4. By default, backups are replicated to a second region; this can be reviewed if a single-region requirement applies.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      },
+      {
+        "intent": "configuration_help",
+        "confidence": 0.04
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 25
+  },
+  {
+    "ticket_id": "DEV-0135",
+    "channel": "docs_comment",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Your primary data region is set when your organisation is created and is shown on the organisation settings page. This determines where your data is physically stored. Backup data may be replicated to another region by default, and metadata such as account names and billing records is stored centrally regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 82095
+  },
+  {
+    "ticket_id": "DEV-0154",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your organisation's region in one step:\n1. Look at the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 50623
+  },
+  {
+    "ticket_id": "DEV-0188",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can find the definite answer in a few steps:\n1. By default, backups are replicated to a second region. Cross-region replication is enabled by default.\n2. Check the region shown on your organisation settings page. This region is fixed at creation and determines where your primary data is stored.\n3. If your compliance review requires data to stay in a single region, review the backup replication setting, since cross-region replication is enabled by default and may need to be adjusted.\n4. Please note that metadata such as account names and billing records is stored centrally, regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 1.0,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 72221
+  },
+  {
+    "ticket_id": "DEV-0205",
+    "channel": "forum",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your backup replication in a few steps:\n1. Cross-region replication is enabled by default for backups.\n2. If your compliance review requires data to stay in one region, review the backup replication setting to adjust it.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 84361
+  },
+  {
+    "ticket_id": "DEV-0208",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share the following with your customer:\n1. The primary data for your organisation is stored in the region set when the organisation was created. You can check this on the organisation settings page.\n2. If your customer needs data in a specific region, you can enable read replicas in additional regions. This reduces latency for distant users without moving the primary storage.\n3. Backup copies are replicated to a second region by default. If your customer requires data to stay in a single region, you can review and adjust the backup replication setting.\n4. Please note that metadata such as account names and billing records is stored centrally, regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 41452
+  },
+  {
+    "ticket_id": "DEV-0275",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Your primary data is stored in the region associated with your organisation, which is fixed at creation. You can check the specific region in your organisation settings. Please note that metadata such as account names and billing records are stored centrally, regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 50710
+  },
+  {
+    "ticket_id": "DEV-0289",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ACCT-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your data region and options in a few steps:\n1. Check the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.\n2. Enable read replicas in additional regions to reduce latency for distant users without moving primary storage.\n3. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.\n4. Migrating an organisation between regions requires a planned migration with support and involves a maintenance window.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 43419
+  },
+  {
+    "ticket_id": "DEV-0292",
+    "channel": "forum",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "no reviewed article covers the question",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": 0.0,
+    "review": null,
+    "package": {
+      "summary": "The customer needs written confirmation of where their data is physically stored for EU residency compliance and wants material to share with their own customer.",
+      "unsure_about": "No reviewed article currently covers the data residency question, so the system cannot generate a drafted answer automatically.",
+      "summary_by": "PR-06 1.0",
+      "reason": "no reviewed article covers the question",
+      "alternatives_considered": [
+        {
+          "intent": "compliance_request",
+          "confidence": 0.1
+        }
+      ],
+      "articles_checked": [
+        "DOC-DATA-003 Data residency and regional storage",
+        "DOC-DATA-001 Exporting account data and scheduled extracts"
+      ],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "It is a request for information; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "It is a request for information; nothing is broken.",
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 58717
+  },
+  {
+    "ticket_id": "DEV-0309",
+    "channel": "docs_comment",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Your primary data region is set when your organisation is created and is shown on the organisation settings page. This determines where your data is physically stored. Backup data may be replicated to another region by default, and metadata such as account names and billing records is stored centrally regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19
+  },
+  {
+    "ticket_id": "DEV-0317",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ACCT-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your organisation's data region in a few steps:\n1. Check the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.\n2. Enable read replicas in additional regions to reduce latency for distant users without moving primary storage.\n3. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.\n4. Migrating an organisation between regions requires a planned migration with support and involves a maintenance window.\nNote: Metadata such as account names and billing records is stored centrally regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 48276
+  },
+  {
+    "ticket_id": "DEV-0359",
+    "channel": "email",
+    "customer_tier": "enterprise",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your organisation's region in one step:\n1. Look at the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 20
+  },
+  {
+    "ticket_id": "DEV-0371",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.85,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ACCT-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can check your organisation's region and data storage settings in a few steps:\n1. Check the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.\n2. Enable read replicas in additional regions to reduce latency for distant users without moving primary storage.\n3. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.\n4. Migrating an organisation between regions requires a planned migration with support and involves a maintenance window.\nNote: Metadata such as account names and billing records is stored centrally regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 48600
+  },
+  {
+    "ticket_id": "DEV-0388",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "By default, backups are replicated to a second region. 1. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 1.0,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 52708
+  },
+  {
+    "ticket_id": "DEV-0389",
+    "channel": "email",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-001"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "no reviewed article covers the question",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff"
+    ],
+    "draft": "",
+    "cited": "",
+    "answer_confidence": 0.0,
+    "review": null,
+    "package": {
+      "summary": "The customer needs written confirmation of where their data is physically stored for EU residency compliance and wants material to share with their own customer.",
+      "unsure_about": "No reviewed article currently covers the data residency question, so the system cannot generate a drafted answer automatically.",
+      "summary_by": "PR-06 1.0",
+      "reason": "no reviewed article covers the question",
+      "alternatives_considered": [
+        {
+          "intent": "compliance_request",
+          "confidence": 0.1
+        }
+      ],
+      "articles_checked": [
+        "DOC-DATA-003 Data residency and regional storage",
+        "DOC-DATA-001 Exporting account data and scheduled extracts"
+      ],
+      "draft": "",
+      "impact": "low",
+      "impact_reason": "It is a request for information; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "It is a request for information; nothing is broken.",
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 22
+  },
+  {
+    "ticket_id": "DEV-0432",
+    "channel": "docs_comment",
+    "customer_tier": "enterprise",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "The region where your primary data is stored is shown on the organisation settings page. This region is fixed at creation and determines where primary data is stored. Additionally, metadata such as account names and billing records is stored centrally, regardless of the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 31787
+  },
+  {
+    "ticket_id": "DEV-0433",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.88,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share this with your customer:\n1. The physical location of your primary data is determined by the region set when your organisation was created. This is shown in your organisation settings and is fixed at creation.\n2. Read replicas can be enabled in additional regions to help reduce latency for users in those regions, without moving the primary data storage.\n3. By default, backups are replicated to a second region. If your customer requires data to stay in a single region, you can review and adjust the backup replication settings.\n4. Please note that metadata such as account names and billing records are stored centrally and are separate from the data region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.9,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.1
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "nvidia/nemotron-3.5-lightning:free",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 18
+  },
+  {
+    "ticket_id": "DEV-0445",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ACCT-002"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "reply review failed or did not run",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Go to the organisation settings page and look at the region that is displayed. This is the region where your primary data is stored.\n2. If the region is not in the EU, you can request a migration to an EU region. This requires a planned migration with support and a maintenance window.\n3. (Optional) Enable read replicas in additional regions to reduce latency for users far from the primary region, but the primary data will remain in the original region unless you migrate.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "block",
+      "problems": [
+        "States a fact not in article (EU region migration)"
+      ]
+    },
+    "package": {
+      "summary": "Business customer wants to keep their data within the EU for a contract, but they are unsure which region their organization is in.",
+      "unsure_about": "The automated reply review failed, so a person must review and respond.",
+      "summary_by": "PR-06 1.0",
+      "reason": "reply review failed or did not run",
+      "alternatives_considered": [
+        {
+          "intent": "compliance_request",
+          "confidence": 0.08
+        }
+      ],
+      "articles_checked": [
+        "DOC-DATA-003 Data residency and regional storage",
+        "DOC-ACCT-002 Organisation setup and project structure"
+      ],
+      "draft": "1. Go to the organisation settings page and look at the region that is displayed. This is the region where your primary data is stored.\n2. If the region is not in the EU, you can request a migration to an EU region. This requires a planned migration with support and a maintenance window.\n3. (Optional) Enable read replicas in additional regions to reduce latency for users far from the primary region, but the primary data will remain in the original region unless you migrate.",
+      "impact": "low",
+      "impact_reason": "A question about data residency; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "A question about data residency; nothing is broken.",
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.08
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 7319
+  },
+  {
+    "ticket_id": "DEV-0464",
+    "channel": "chat",
+    "customer_tier": "standard",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Backups are replicated to a second region by default. If you need them to stay in a single region, review the backup replication setting in your organisation settings.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.08
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 19296
+  },
+  {
+    "ticket_id": "DEV-0466",
+    "channel": "email",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.93,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "To find out where your data is stored:\n1. Go to the Organisation Settings page.\n2. Look at the region field \u2013 this is the region where your primary data is stored.\nIf you need to keep data within the EU, you may need to plan a migration to an EU region.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.07
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 18572
+  },
+  {
+    "ticket_id": "DEV-0483",
+    "channel": "chat",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ACCT-002"
+    ],
+    "route": "escalate",
+    "tier": 1,
+    "reason": "reply review failed or did not run",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "1. Go to the organisation settings page and look at the region that is displayed. This is the region where your primary data is stored.\n2. If the region is not in the EU, you can request a migration to an EU region. This requires a planned migration with support and a maintenance window.\n3. (Optional) Enable read replicas in additional regions to reduce latency for users far from the primary region, but the primary data will remain in the original region unless you migrate.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "block",
+      "problems": [
+        "States a fact not in article (EU region migration)"
+      ]
+    },
+    "package": {
+      "summary": "Business customer wants to keep their data within the EU for a contract, but they are unsure which region their organization is in.",
+      "unsure_about": "The automated reply review failed, so a person must review and respond.",
+      "summary_by": "PR-06 1.0",
+      "reason": "reply review failed or did not run",
+      "alternatives_considered": [
+        {
+          "intent": "compliance_request",
+          "confidence": 0.08
+        }
+      ],
+      "articles_checked": [
+        "DOC-DATA-003 Data residency and regional storage",
+        "DOC-ACCT-002 Organisation setup and project structure"
+      ],
+      "draft": "1. Go to the organisation settings page and look at the region that is displayed. This is the region where your primary data is stored.\n2. If the region is not in the EU, you can request a migration to an EU region. This requires a planned migration with support and a maintenance window.\n3. (Optional) Enable read replicas in additional regions to reduce latency for users far from the primary region, but the primary data will remain in the original region unless you migrate.",
+      "impact": "low",
+      "impact_reason": "A question about data residency; nothing is broken.",
+      "impact_by": "PR-03 1.1"
+    },
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": "low",
+    "impact_reason": "A question about data residency; nothing is broken.",
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.08
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review",
+      "impact",
+      "escalation_summary"
+    ],
+    "latency_ms": 2667
+  },
+  {
+    "ticket_id": "DEV-0489",
+    "channel": "docs_comment",
+    "customer_tier": "business",
+    "intent": "data_residency",
+    "urgency": "medium",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-ONB-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "Backups are replicated to a second region by default. If you need them only in the primary region, review the backup replication setting to disable cross\u2011region replication.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.12
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "openai/gpt-oss-120b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 14267
+  },
+  {
+    "ticket_id": "DEV-0492",
+    "channel": "chat",
+    "customer_tier": "enterprise",
+    "intent": "data_residency",
+    "urgency": "low",
+    "confidence": 0.92,
+    "billing_dispute": false,
+    "data_commitment_request": false,
+    "retrieved_docs": [
+      "DOC-DATA-003",
+      "DOC-DATA-002"
+    ],
+    "route": "auto_respond",
+    "tier": null,
+    "reason": "all checks passed",
+    "checks": [
+      "missing_fields",
+      "instruction_check",
+      "must_not",
+      "warning_words",
+      "dispute_commitment_flags",
+      "classify_cutoff",
+      "coverage_and_answer_cutoff",
+      "citation",
+      "banned_claims",
+      "reply_review"
+    ],
+    "draft": "You can share this written confirmation:\n\n1. The primary data for an organisation is stored in the region that was selected when the organisation was created. This region is shown on the **Organisation Settings** page and cannot be changed without a migration request.\n2. Backups are replicated to a second region by default. If a single\u2011region requirement applies, the backup replication setting can be adjusted.\n3. Metadata such as account names and billing records is stored centrally and is not tied to the data region.\n\nThis information explains where the customer's data is physically stored and how it can be verified.",
+    "cited": "DOC-DATA-003",
+    "answer_confidence": 0.95,
+    "review": {
+      "verdict": "pass",
+      "problems": []
+    },
+    "package": null,
+    "unclear_because": null,
+    "clarifying_question": null,
+    "impact": null,
+    "impact_reason": null,
+    "alternatives": [
+      {
+        "intent": "compliance_request",
+        "confidence": 0.08
+      }
+    ],
+    "redactions": {
+      "email": 0,
+      "phone": 0,
+      "api_key": 0
+    },
+    "model_used": "openai/gpt-oss-20b",
+    "steps": [
+      "prepare",
+      "classify",
+      "retrieve",
+      "draft",
+      "review"
+    ],
+    "latency_ms": 20765
+  }
+]
