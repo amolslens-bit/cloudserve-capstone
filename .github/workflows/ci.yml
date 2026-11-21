@@ -1,0 +1,24 @@
+# Setup Guide section 07: pytest on every push and pull request.
+# Python 3.11, ubuntu-latest. No real API keys in this file.
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # Stubs only — the test suite uses FakeLLM and a fake search (tests/conftest.py),
+      # so no model is called and no Chroma index is loaded. These values are not
+      # secrets. Do not paste a real key here.
+      OPENROUTER_API_KEY: ci-not-used
+      GROQ_API_KEY: ci-not-used
+      ANTHROPIC_API_KEY: ci-not-used
+      METRICS: "off"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest tests/ -v

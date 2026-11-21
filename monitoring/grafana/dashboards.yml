@@ -1,0 +1,13 @@
+apiVersion: 1
+providers:
+  - name: CloudServe
+    orgId: 1
+    folder: CloudServe
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      # APPLY.txt overwrites this with the real path when it copies the file
+      # into Grafana's conf/provisioning/dashboards/ folder.
+      path: C:\capstone\monitoring\grafana

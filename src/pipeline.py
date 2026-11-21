@@ -17,14 +17,12 @@ from prepare import prepare
 from retrieve import retrieve
 from review import review
 from route import route
-from llm import reset_call_log, pop_call_log
 
 EARLY_EXIT_OK = "no reviewed article covers the question"
 
 
 def process(raw_ticket):
     start = time.time()
-    reset_call_log()
     # Keep the unmasked ticket for the agent handover only (NFR-04).
     original_ticket = {
         "subject": raw_ticket.get("subject") or "",
@@ -119,7 +117,6 @@ def process(raw_ticket):
         "alternatives": cls.get("alternatives", []),
         "redactions": t.get("redactions", {}),
         "model_used": cls.get("model_used"), "steps": steps,
-        "model_calls": pop_call_log(),
         "latency_ms": int((time.time() - start) * 1000),
     }
 

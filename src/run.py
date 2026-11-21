@@ -12,7 +12,6 @@
   figures (volume, business, technical, governance) worked out by code.
 Labels, if the file has them, are used ONLY for the scores in the report."""
 import argparse
-import os
 import json
 import re
 import time
@@ -22,7 +21,6 @@ from pathlib import Path
 
 from decision_log import connect, log_decision
 from pipeline import process
-from llm import configure, MODE, PAID_SETTINGS
 
 PROMPT_VERSION = "PR-01 1.3, PR-05 1.2, PR-04 1.0, PR-06 1.0, PR-02 1.0, PR-03 1.1"
 PAUSE_S = 3.5               # gap between tickets, keeps under per-minute limits
@@ -43,7 +41,7 @@ def escalation(ticket_id, tier, reason, tier_name=None, raw=None):
             "urgency": "high", "confidence": 0.0, "alternatives": [], "billing_dispute": None,
             "data_commitment_request": None, "retrieved_docs": [], "route": "escalate",
             "tier": tier, "reason": reason, "checks": [], "draft": "", "cited": "",
-            "answer_confidence": None, "review": None, "model_used": "none", "model_calls": [],
+            "answer_confidence": None, "review": None, "model_used": "none",
             "package": {"summary": "Summary not available; please read the ticket.",
                         "unsure_about": f"Escalated because: {reason}.", "summary_by": "code fallback",
                         "reason": reason, "articles_checked": [], "draft": "",
@@ -204,18 +202,6 @@ def write_report(results, raw_tickets, out_path, started, finished, logged):
     lines += ["", "## Models used", ""]
     for m, c in Counter(r["model_used"] for r in results).most_common():
         lines.append(f"- {c}  {m}")
-    # D19: every AI call (not only the classify model) with its own latency.
-    call_rows = [c for r in results for c in (r.get("model_calls") or [])]
-    if call_rows:
-        lines += ["", "## Model calls (each AI call)", ""]
-        by = {}
-        for c in call_rows:
-            by.setdefault(c.get("model") or "unknown", []).append(c)
-        for m, items in by.items():
-            ok = sum(1 for x in items if x.get("ok"))
-            times = [x.get("latency_ms") or 0 for x in items]
-            mean = (sum(times) / len(times) / 1000) if times else 0
-            lines.append(f"- {len(items)}  {m} ({ok} ok; mean {mean:.2f} s)")
 
     # Labels, if the file has them, are used ONLY for scores (dev / validation files do, hidden set may not)
     labels = {t["ticket_id"]: t["labels"] for t in raw_tickets
@@ -365,18 +351,7 @@ def main():
     ap.add_argument("input", help="path to the tickets JSON file")
     ap.add_argument("output", help="path for the results JSON file")
     ap.add_argument("--limit", type=int, help="development only: process just the first N tickets")
-    ap.add_argument("--paid-holdout", action="store_true",
-                    help="D19: use Claude Haiku 5.5 for this run only (set this for the one-time holdout).")
     args = ap.parse_args()
-
-    if args.paid_holdout:
-        os.environ["LLM_MODE"] = "paid_holdout"
-        configure("paid_holdout")
-    if MODE == "paid_holdout":
-        fb = PAID_SETTINGS.get("fallback") or "none"
-        print(f"LLM mode: paid_holdout ({PAID_SETTINGS.get('model')}, "
-              f"effort={PAID_SETTINGS.get('effort')}, fallback={fb})")
-        print("Use this only for the one-time holdout run, after a 1-ticket smoke test.")
 
     raw_tickets = load_tickets(args.input)
     if args.limit:

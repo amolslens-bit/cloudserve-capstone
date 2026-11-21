@@ -1,0 +1,29 @@
+# Prometheus config for a local Windows (or any host) process.
+# Targets are localhost, not host.docker.internal.
+# Four jobs so a 4-window dev500 run can scrape 8001-8004 separately.
+# Official scrape interval from the Setup Guide: 15s.
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "support-system-8001"
+    static_configs:
+      - targets: ["localhost:8001"]
+        labels:
+          window: "part1"
+  - job_name: "support-system-8002"
+    static_configs:
+      - targets: ["localhost:8002"]
+        labels:
+          window: "part2"
+  - job_name: "support-system-8003"
+    static_configs:
+      - targets: ["localhost:8003"]
+        labels:
+          window: "part3"
+  - job_name: "support-system-8004"
+    static_configs:
+      - targets: ["localhost:8004"]
+        labels:
+          window: "part4"

@@ -1,4 +1,8 @@
+@"
 .env
-storage/
 .venv/
+storage/
 __pycache__/
+monitoring/tools/
+outputs/
+"@ | Set-Content -Encoding utf8 .gitignore
