@@ -12,20 +12,12 @@ MUST_NOT = {"security_incident": 2, "compliance_request": 2,
 
 # Starter list; the real list is to come from the dev tickets (Section 4 gap)
 WARNING_WORDS = ["breach", "hacked", "compromised", "unauthorised", "unauthorized",
-                 "lawyer", "legal action", "lawsuit", "gdpr request", "data leak",
-                 "audit"]  # "audit": 33 of 500 dev tickets, all must-not (17 Nov)
+                 "lawyer", "legal action", "lawsuit", "gdpr request", "data leak", "audit"]
 
 # FR-01 instruction check: text that tries to give the AI orders
 INSTRUCTION_PATTERNS = [r"ignore (all |your |the |any )?(previous |prior )?(rules|instructions)",
                         r"you are now", r"system prompt", r"disregard (your|the|all)",
                         r"reply (only )?with ['\"]"]
-
-# PR-05 1.4 coverage judgement (D23). Escalation reasons, tier 1, draft attached.
-NOT_ANSWERED = "reviewed article does not answer the question (draft attached)"
-NOT_ANSWERED_MISSING = "reviewed article does not answer the question, coverage answer missing (draft attached)"
-NOT_ANSWERED_QUOTE = "reviewed article does not answer the question, quote not found in article (draft attached)"
-# The quote check. Set to False ONLY if the dev check shows it escalates good answers.
-EVIDENCE_GATE = True
 
 # must_not_claim phrases, checked by code on every draft
 BANNED_CLAIMS = ["a refund has been issued", "the issue has been fixed on our side",
@@ -41,7 +33,7 @@ def route(ticket, cls, ans=None, pr04_passed=None):
     def esc(tier, reason):
         return {"route": "escalate", "tier": tier, "reason": reason, "checks": checks}
 
-    # 1. Missing details (FR-01, D18): tier 1
+    # 1. Missing details (FR-01, D17): tier 1
     checks.append("missing_fields")
     if ticket.get("missing_fields"):
         return esc(1, "missing details: " + ", ".join(ticket["missing_fields"]))
@@ -70,17 +62,6 @@ def route(ticket, cls, ans=None, pr04_passed=None):
     checks.append("coverage_and_answer_cutoff")
     if not ans or not ans.get("covered"):
         return esc(1, "no reviewed article covers the question")
-    # 7a. PR-05 1.4 (D23): the article must answer THIS question, not just the topic.
-    # answer.py 1.4 always sets answers_question (True, False, or None if the AI left it
-    # out). Only False/None escalate; a missing answer counts as failed, like PR-04 not run.
-    if "answers_question" in ans:
-        if ans["answers_question"] is None:
-            return esc(1, NOT_ANSWERED_MISSING)
-        if ans["answers_question"] is not True:
-            why = " ".join(str(ans.get("not_answered_reason") or "").split())[:120]
-            return esc(1, NOT_ANSWERED + (f": {why}" if why else ""))
-        if EVIDENCE_GATE and ans.get("evidence_found") is False:
-            return esc(1, NOT_ANSWERED_QUOTE)
     if ans["confidence"] < ANSWER_CUTOFF:
         return esc(1, f"answer confidence {ans['confidence']} below cut-off (draft attached)")
     # 8. Citation present (FR-08); answer.py already checks it is one we supplied
@@ -117,10 +98,6 @@ if __name__ == "__main__":
         ("low classify conf", base, ok_cls | {"confidence": 0.3}, ok_ans, True, "escalate"),
         ("not covered", base, ok_cls, {"covered": False}, True, "escalate"),
         ("low answer conf", base, ok_cls, ok_ans | {"confidence": 0.5}, True, "escalate"),
-        ("article does not answer", base, ok_cls, ok_ans | {"answers_question": False}, True, "escalate"),
-        ("coverage answer missing", base, ok_cls, ok_ans | {"answers_question": None}, True, "escalate"),
-        ("quote not in article", base, ok_cls, ok_ans | {"answers_question": True, "evidence_found": False}, True, "escalate"),
-        ("answers it, quote found", base, ok_cls, ok_ans | {"answers_question": True, "evidence_found": True}, True, "auto_respond"),
         ("banned claim", base, ok_cls, ok_ans | {"answer": "A refund has been issued."}, True, "escalate"),
     ]
     passed = 0
